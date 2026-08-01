@@ -18,4 +18,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }, observerOptions);
 
   fadeElements.forEach(el => observer.observe(el));
+  
+  function addSmoothScroll(buttonId, targetId) {
+
+        const button = document.getElementById(buttonId);
+        const target = document.getElementById(targetId);
+
+        if (!button || !target) return;
+
+        button.addEventListener("click", () => {
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        });
+    }
+
+    addSmoothScroll("scrollToExperience", "experience");
+    addSmoothScroll("scrollToMain", "trailer");
 });
