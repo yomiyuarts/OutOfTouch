@@ -25,6 +25,14 @@ html {
     text-align: center;
 }
 
+.nav-bar a.prodname{
+    background-image: linear-gradient(to right, #509AD5 31.5%, #EAF0F1 31.5%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
 .nav-links{
     display:flex;
     flex: 1;
