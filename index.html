@@ -26,12 +26,18 @@
     <a href="#trailer" id="scrollToMain" class="prodname">RE:TOUCH</a>
     <div class="nav-links">
         <a href="aboutus.html">ABOUT US</a>
-        <a href="#experience"style="background-color: transparent; padding: 10px 20px; border-radius: 30px;">EXPERIENCE HERE</a>
+        <a href="experience.html" style="background-color: transparent; padding: 10px 20px; border-radius: 30px;">EXPERIENCE HERE</a>
         <button class="settings">
             <i class="fa-solid fa-gear"></i>
         </button>
     </div>
 </div>
+
+<button class="scroll-down" onclick="document.getElementById('experience').scrollIntoView({
+    behavior: 'smooth'
+})">
+    Start the Experience
+</button>
 
 <div class="trailer fade-in-element" id="trailer">
     <h1>OUT OF TOUCH</h1>
@@ -74,6 +80,8 @@
 <div class="footer fade-in-element" id="experience">
     <p>© 2026 Re:Touch All rights reserved.</p>
 </div>
+
+<script src="JS/fade.js"></script>
 
 </body>
 </html>
