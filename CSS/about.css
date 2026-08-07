@@ -33,6 +33,110 @@
 .artists img{
     width:100%;
     height:100%;
-    object-fit:contain;
+    object-fit: contain;
     border-radius:30px;
+}
+
+
+
+
+.artist{
+    width:100%;
+    height:200px;
+    border-radius:30px;
+    margin-top: 14%;
+    display:flex;
+    justify-content:center;
+    align-items:center; 
+}
+
+.artist2{
+    width:100%;
+    height:200px;
+    border-radius:30px;
+    margin-top: 14%;
+    display:flex;
+    justify-content:center;
+    align-items:center; 
+}
+
+.text-box-artist{
+    display:flex;
+    flex-direction:column;
+    justify-content:left;
+    align-items:left; 
+}
+
+.text-box-artist2{
+    display:flex;
+    flex-direction:column;
+    justify-content:left;
+    align-items:right; 
+}
+
+.text-box-artist p{
+    font-size: 3rem;
+    font-weight:500;
+    padding: 0 50px 0 50px;
+    color:white;
+    font-family: "Cantarell", sans-serif;
+    text-align: justify;
+}
+
+.text-box-artist2 p{
+    font-size: 3rem;
+    font-weight:500;
+    padding: 0 50px 0 50px;
+    color:white;
+    font-family: "Cantarell", sans-serif;
+    text-align: right;
+}
+
+.text-box-artist h1{
+    font-size: 4rem;
+    font-weight:600;
+    padding: 0 0 0 50px;
+    color:white;
+    font-family: "Caprasimo", serif;
+    text-align: left;
+    margin-bottom:10px;
+}
+
+.text-box-artist2 h1{
+    font-size: 4rem;
+    font-weight:600;
+    padding: 0 50px 0 0;
+    color:white;
+    font-family: "Caprasimo", serif;
+    text-align: right;
+    margin-bottom:10px;
+}
+
+.artist img{
+    width: 98%;
+    height: 98%;
+    object-fit: cover;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 30px;
+}
+
+.artist2 img{
+    width: 98%;
+    height: 98%;
+    object-fit: cover;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 30px;
+}
+
+.person {
+    width:500px;
+    height:500px;
+    border-radius:30px;
+    overflow:hidden;
+    background:#EAF0F1;
+    display:flex;
+    justify-content:center;
+    align-items:center; 
 }

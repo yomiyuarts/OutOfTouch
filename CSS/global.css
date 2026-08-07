@@ -9,7 +9,7 @@ body{
     background-image: url("assets/Homepage.png");
     background-size: 100% auto;
     background-position: top center;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-attachment: scroll;
 }
 
@@ -24,3 +24,32 @@ body{
   opacity: 1;
   transform: translateY(0); 
 }
+
+
+
+
+
+
+
+    .wiggle-triangle {
+      width: 150px;
+      aspect-ratio: 1;
+      background: #426284;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      
+      animation: slowWiggle 4s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+
+    @keyframes slowWiggle {
+      0%, 100% {
+        transform: rotate(0deg) scale(1);
+      }
+      25% {
+        transform: rotate(-5deg) scale(1.02);
+      }
+      75% {
+        transform: rotate(5deg) scale(0.98);
+      }
+    }
