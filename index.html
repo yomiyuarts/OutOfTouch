@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="CSS/homepage.css">
     <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/settings.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
@@ -15,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Candal&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cantarell:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
 
 </head>
 
@@ -27,9 +29,9 @@
     <div class="nav-links">
         <a href="aboutus.html">ABOUT US</a>
         <a href="experience.html" style="background-color: transparent; padding: 10px 20px; border-radius: 30px;">EXPERIENCE HERE</a>
-        <button class="settings">
-            <i class="fa-solid fa-gear"></i>
-        </button>
+        <button class="settings" id="settingsButton" type="button">
+    <i class="fa-solid fa-gear"></i>
+</button>
     </div>
 </div>
 
@@ -81,7 +83,45 @@
     <p>© 2026 Re:Touch All rights reserved.</p>
 </div>
 
+
+
+<div class="settings-overlay" id="settingsModal">
+
+    <div class="settings-content">
+        <h1>SETTINGS</h1>
+        <p>Adjust the settings below to customize your experience.</p>
+
+        <label for="choice" class="settings-font">FONT STYLE</label>
+
+        <select id="choice" name="choice" class="font-choice">
+            <option value="option1" class="caprasimo">Caprasimo</option>
+            <option value="option2" class="cherry-bomb">Cherry Bomb</option>
+            <option value="option3" class="candal">Candal</option>
+        </select>
+
+        <br>
+
+        <label for="choice" class="settings-color">COLOR PALETTE</label>
+
+        <select id="choice" name="choice" class="font-choice">
+            <option value="option1" class="blue">Blue</option>
+            <option value="option2" class="green">Green</option>
+            <option value="option3" class="red">Red</option>
+        </select>
+
+        <br>
+
+        <label class="toggle">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>    
+
+    </div>
+
+</div>
+
 <script src="JS/fade.js"></script>
+<script src="JS/settings.js"></script>
 
 </body>
 </html>

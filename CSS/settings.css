@@ -1,0 +1,150 @@
+.settings-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    z-index: 9999;
+
+    /* HIDDEN */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* OPEN */
+.settings-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.settings-content {
+    position: relative;
+    width: 40%;
+    max-width: 90%;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background: #EAF0F1;
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 7px solid #1E1F24;
+}
+
+.settings-content h1 {
+    margin-bottom: -15px;
+    font-size: 4rem;
+    color: #1E1F24;
+    font-family: "Caprasimo", serif;
+}
+
+.settings-content p {
+    font-size: 1.25rem;
+    color: #1E1F24;
+    font-family: "Candal", sans-serif;
+    margin-bottom: 40px;
+}
+
+.settings-font {
+    margin-bottom: 10px;
+    margin-right: 100px;
+    font-size: 2.5rem;
+    color: #1E1F24;
+    font-family: "Candal", sans-serif;
+}
+
+.font-choice {
+    justify-content: center;
+    gap: 20px;
+    font-size: 2rem;
+    color: #1E1F24;
+    height: 70px;
+    width: 300px;
+    border-radius: 10px;
+    border: 3px solid #1E1F24;
+    font-family: "Caprasimo", serif;
+    margin-bottom: 20px;
+}
+
+.caprasimo {
+    font-family: "Caprasimo", serif !important;
+}
+
+.cherry-bomb {
+    font-family: "Cherry Bomb One", cursive !important;
+}
+
+.candal {
+    font-family: "Candal", sans-serif !important;
+}
+
+.settings-color {
+    margin-bottom: 10px;
+    margin-right: 20px;
+    font-size: 2.5rem;
+    color: #1E1F24;
+    font-family: "Candal", sans-serif;
+}
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 90px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.toggle input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: #426284;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 3px solid #1E1F24;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 3px;
+    top: 3px;
+    background: #1a2b3d;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.toggle input:checked + .slider {
+    background: #FFFFFF;
+}
+
+.toggle input:checked + .slider::before {
+    transform: translateX(30px);
+}
+
+.blue {
+    color: #426284;
+}
+
+.green {
+    color: #4CAF50;
+}
+
+.red {
+    color: #F44336;
+}
+
+
