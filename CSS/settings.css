@@ -10,17 +10,16 @@
 
     z-index: 9999;
 
-    /* HIDDEN */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
 
-/* OPEN */
 .settings-overlay.active {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    animation: fadeUp 0.4s ease-out;
 }
 
 .settings-content {
@@ -96,7 +95,7 @@
 .toggle {
     position: relative;
     display: inline-block;
-    width: 90px;
+    width: 92px;
     height: 60px;
     margin-bottom: 20px;
 }
@@ -147,4 +146,15 @@
     color: #F44336;
 }
 
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
