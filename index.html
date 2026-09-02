@@ -21,6 +21,7 @@
 </head>
 
 <script src="JS/script.js"></script>
+<script src="JS/switch.js"></script>
 
 <body>
 
@@ -30,8 +31,8 @@
         <a href="aboutus.html">ABOUT US</a>
         <a href="experience.html" style="background-color: transparent; padding: 10px 20px; border-radius: 30px;">EXPERIENCE HERE</a>
         <button class="settings" id="settingsButton" type="button">
-    <i class="fa-solid fa-gear"></i>
-</button>
+            <i class="fa-solid fa-gear"></i>
+        </button>
     </div>
 </div>
 
@@ -63,6 +64,7 @@
 
 <div class="description2 fade-in-element">
     <div class="text-box">
+        <h1>INTERACTIVE ANIMATION</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -72,8 +74,6 @@
         <img src="CSS/assets/background.png">
     </div>
 </div>
-
-<img class="intani fade-in-element" src="CSS/assets/interactiveanimation.png" alt="Interactive Animation">
 
 <div class="stepinto fade-in-element">
     <button class="stepinto-button" onclick="window.location.href='experience.html'">STEP INTO THE EXPERIENCE</button>
@@ -93,7 +93,7 @@
 
         <label for="choice" class="settings-font">FONT STYLE</label>
 
-        <select id="choice" name="choice" class="font-choice">
+        <select id="choice" name="fontChoice" class="font-choice">
             <option value="option1" class="caprasimo">Caprasimo</option>
             <option value="option2" class="cherry-bomb">Cherry Bomb</option>
             <option value="option3" class="candal">Candal</option>
@@ -101,20 +101,15 @@
 
         <br>
 
-        <label for="choice" class="settings-color">COLOR PALETTE</label>
+        <label for="colorChoice" class="settings-color">COLOR PALETTE</label>
 
-        <select id="choice" name="choice" class="font-choice">
-            <option value="option1" class="blue">Blue</option>
-            <option value="option2" class="green">Green</option>
-            <option value="option3" class="red">Red</option>
+        <select id="colorChoice" name="colorChoice" class="color-choice">
+            <option value="blue" class="blue">Blue</option>
+            <option value="green" class="green">Green</option>
+            <option value="red" class="red">Red</option>
         </select>
 
         <br>
-
-        <label class="toggle">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>    
 
     </div>
 
@@ -122,6 +117,7 @@
 
 <script src="JS/fade.js"></script>
 <script src="JS/settings.js"></script>
+<script src="JS/color.js"></script>
 
 </body>
 </html>
