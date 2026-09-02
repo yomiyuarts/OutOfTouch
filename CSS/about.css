@@ -14,7 +14,7 @@
     color:white;
     font-size: 6rem;
     font-weight:600;
-    font-family: "Caprasimo", serif;
+    font-family: var(--main-font);
     margin:0;
     margin-bottom:5px;
     margin-top: 70px;
@@ -97,7 +97,7 @@
     font-weight:600;
     padding: 0 0 0 50px;
     color:white;
-    font-family: "Caprasimo", serif;
+    font-family: var(--main-font);
     text-align: left;
     margin-bottom:10px;
 }
@@ -107,7 +107,7 @@
     font-weight:600;
     padding: 0 50px 0 0;
     color:white;
-    font-family: "Caprasimo", serif;
+    font-family: var(--main-font);
     text-align: right;
     margin-bottom:10px;
 }

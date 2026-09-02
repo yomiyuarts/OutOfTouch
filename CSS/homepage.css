@@ -21,12 +21,12 @@ html {
     font-size: 3rem;
     font-weight:600;
     margin-right: 20px;
-    font-family: "Caprasimo", serif;
+    font-family: var(--main-font);
     text-align: center;
 }
 
 .nav-bar a.prodname{
-    background-image: linear-gradient(to right, var(--primary-color) 31.5%, var(--text-color) 31.5%) !important;
+    background-image: linear-gradient(to right, var(--primary-color) 31.8%, var(--text-color) 31.8%) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     color: transparent !important;
@@ -97,7 +97,7 @@ html {
     color:white;
     font-size: 6rem;
     font-weight:600;
-    font-family: "Caprasimo", serif;
+    font-family: var(--main-font);
     margin:0;
     margin-bottom:5px;
     margin-top: 70px;
@@ -152,7 +152,7 @@ html {
     font-weight:600;
     padding: 0 0 0 50px;
     color:white;
-    font-family: "Caprasimo", serif;
+    font-family: var(--main-font);
     text-align: left;
     margin-bottom:10px;
 }
@@ -261,7 +261,7 @@ html {
     font-size: 2rem;
     font-weight: 500;
     color: white;
-    font-family: "Caprasimo", serif;
+    font-family: var(--main-font);
     text-align: center;
     margin-bottom: -50px;
 }

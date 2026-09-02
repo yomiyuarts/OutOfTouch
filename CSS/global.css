@@ -38,14 +38,14 @@ body.fade-out {
     opacity: 0;
 }
 
-
-
 :root {
     --background-color: #727c8b;
     --primary-color: #509AD5;
     --secondary-color: #EAF0F1;
     --accent-color: #2d3137;
     --text-color: white;
+
+    --main-font: "Caprasimo", serif;
 }
 
 body.color-blue {
@@ -75,4 +75,21 @@ body.color-red {
     --secondary-color: #E5C87A;
     --accent-color: #2d3137;
     --text-color: white;
+}
+
+body.font-option1 {
+    --main-font: "Caprasimo", serif;
+}
+
+body.font-option2 {
+    --main-font: "Cherry Bomb One", cursive;
+}
+
+body.font-option3 {
+    --main-font: "Candal", sans-serif;
+}
+
+body.font-changing {
+    opacity: 0;
+    transition: opacity 0.25s ease;
 }

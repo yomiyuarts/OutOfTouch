@@ -41,7 +41,7 @@
     margin-bottom: -15px;
     font-size: 4rem;
     color: var(--accent-color);
-    font-family: "Caprasimo", serif;
+    font-family: var(--main-font);
 }
 
 .settings-content p {
@@ -68,7 +68,7 @@
     width: 300px;
     border-radius: 10px;
     border: 3px solid var(--accent-color);
-    font-family: "Caprasimo", serif;
+    font-family: var(--main-font);
     margin-bottom: 20px;
 }
 
@@ -81,7 +81,7 @@
     width: 300px;
     border-radius: 10px;
     border: 3px solid var(--accent-color);
-    font-family: "Caprasimo", serif;
+    font-family: var(--main-font);
     margin-bottom: 20px;
 }
 
