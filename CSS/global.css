@@ -63,7 +63,7 @@ body.color-green {
     --background-color: #90C695;
     --primary-color: #53753f;
     --secondary-color: #E5FAA6;
-    --accent-color: #2d3730;
+    --accent-color: #18301f;
     --text-color: white;
 }
 
@@ -73,7 +73,7 @@ body.color-red {
     --background-color: #E57373;
     --primary-color: #b32d41;
     --secondary-color: #E5C87A;
-    --accent-color: #2d3137;
+    --accent-color: #381e1e;
     --text-color: white;
 }
 

@@ -296,3 +296,22 @@ html {
     opacity: 0;
     pointer-events: none;
 }
+
+.drawn-char {
+    position: absolute;
+    bottom: 25%;
+    left: -3%;
+    width: 400px;
+    height: auto;
+    z-index: 9999;
+}
+
+.drawn-char2 {
+    position: absolute;
+    bottom: 10%;
+    right: -3%;
+    width: 400px;
+    height: auto;
+    z-index: 9999;
+    transform: scaleX(-1);
+}
