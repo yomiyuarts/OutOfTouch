@@ -208,7 +208,7 @@ html {
 .stepinto {
     background-image:
         linear-gradient(rgba(35,75,125,.45), rgba(35,75,125,.45)),
-        url("assets/background.png");
+        url("assets/choice.png");
 
     background-color:var(--background-color);
     background-size:100% auto;

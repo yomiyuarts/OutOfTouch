@@ -13,6 +13,33 @@ body{
     background-attachment: scroll;
 }
 
+@media (max-width: 1350px) {
+
+    html::before {
+        content: "A desktop is required for this experience.\A\A Please access this website on a larger screen.";
+        white-space: pre-wrap;
+
+        position: fixed;
+        inset: 0;
+        z-index: 999999999;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 40px;
+        box-sizing: border-box;
+
+        background: linear-gradient(135deg, #000000, #071a3d);
+
+        color: white;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: candal, sans-serif;
+    }
+}
+
 .fade-in-element {
   opacity: 0;
   transform: translateY(40px);
