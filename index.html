@@ -19,6 +19,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Cantarell:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
 
+    <script>
+    if (localStorage.getItem("welcomeSeen") === "true") {
+        document.documentElement.classList.add("welcome-already-seen");
+    }
+</script>
+
 </head>
 
 <script src="JS/script.js"></script>

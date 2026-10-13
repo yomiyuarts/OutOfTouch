@@ -80,11 +80,20 @@ const welcomeModal = document.getElementById("welcomeModal");
 const welcomeButton = document.getElementById("welcomeButton");
 const welcomeButtonNO = document.getElementById("welcomeButtonNO");
 
+// Check if the welcome modal has already been shown
+if (localStorage.getItem("welcomeSeen") === "true") {
+    welcomeModal.classList.add("is-hidden");
+}
+
 function closeWelcomeModal() {
     if (welcomeModal) {
         welcomeModal.classList.add("is-hidden");
     }
 
+    // Remember that the user has seen the welcome modal
+    localStorage.setItem("welcomeSeen", "true");
+
+    // Start background music if it isn't muted
     const audio = document.getElementById("bgMusic");
 
     if (audio && !audio.muted) {
@@ -94,14 +103,14 @@ function closeWelcomeModal() {
     }
 }
 
-// No Thanks: close welcome modal and start music
+// No Thanks: close the modal
 if (welcomeButton) {
     welcomeButton.onclick = function () {
         closeWelcomeModal();
     };
 }
 
-// Sound's Good: open settings, close welcome modal, and start music
+// Sound's Good: open settings and close the modal
 if (welcomeButtonNO) {
     welcomeButtonNO.onclick = function () {
         const settingsButton = document.getElementById("settingsButton");
