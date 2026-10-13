@@ -83,29 +83,6 @@ html {
     border-radius:50%;
 }
 
-.mute-music2{
-    position:absolute;
-    right:40px;
-    top:50%;
-    transform:translateY(-50%);
-
-    border:none;
-    background:transparent;
-    color: var(--accent-color);
-    font-size:1.8rem;
-    cursor:pointer;
-}
-
-.mute-music2:hover{
-    color:var(--background-color);
-}
-
-.mute-music2 i{
-    background:transparent;
-    padding:12px;
-    border-radius:50%;
-}
-
 .mute-music{
     position:absolute;
     right:100px;

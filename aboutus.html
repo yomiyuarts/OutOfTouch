@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="CSS/homepage.css">
     <link rel="stylesheet" href="CSS/global.css">
     <link rel="stylesheet" href="CSS/about.css">
+    <link rel="stylesheet" href="CSS/settings.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
@@ -37,8 +38,12 @@
         <a style="color: #EAF0F1; background-color: var(--primary-color); padding: 10px 20px; border-radius: 30px;">ABOUT US</a>
         <a href="experience.html" style="padding: 10px 20px;">EXPERIENCE HERE</a>
 
-        <button class="mute-music2" id="musicButton" type="button" onclick="toggleMusic()">
+        <button class="mute-music" id="musicButton" type="button" onclick="toggleMusic()">
             <i id="musicIcon" class="fa-solid fa-volume-xmark"></i>
+        </button>
+
+        <button class="settings" id="settingsButton" type="button">
+            <i class="fa-solid fa-gear"></i>
         </button>
         
     </div>
@@ -112,6 +117,37 @@
     <p>© 2026 Re:Touch All rights reserved.</p>
 </div>
 
+<div class="settings-overlay" id="settingsModal">
+
+    <div class="settings-content">
+        <h1>SETTINGS</h1>
+        <p>Adjust the settings below to customize your experience.</p>
+
+        <label for="choice" class="settings-font">FONT STYLE</label>
+
+        <select id="choice" name="fontChoice" class="font-choice">
+            <option value="option1" class="caprasimo">Caprasimo</option>
+            <option value="option2" class="cherry-bomb">Cherry Bomb</option>
+            <option value="option3" class="candal">Candal</option>
+        </select>
+
+        <br>
+
+        <label for="colorChoice" class="settings-color">COLOR PALETTE</label>
+
+        <select id="colorChoice" name="colorChoice" class="color-choice">
+            <option value="blue" class="blue">Blue</option>
+            <option value="green" class="green">Green</option>
+            <option value="red" class="red">Red</option>
+        </select>
+
+        <br>
+
+    </div>
+
+</div>
+
+<script src="JS/settings.js"></script>
 <script src="JS/color.js"></script>
 <script src="JS/font.js"></script>
 
