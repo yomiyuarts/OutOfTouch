@@ -83,6 +83,52 @@ html {
     border-radius:50%;
 }
 
+.mute-music2{
+    position:absolute;
+    right:40px;
+    top:50%;
+    transform:translateY(-50%);
+
+    border:none;
+    background:transparent;
+    color: var(--accent-color);
+    font-size:1.8rem;
+    cursor:pointer;
+}
+
+.mute-music2:hover{
+    color:var(--background-color);
+}
+
+.mute-music2 i{
+    background:transparent;
+    padding:12px;
+    border-radius:50%;
+}
+
+.mute-music{
+    position:absolute;
+    right:100px;
+    top:50%;
+    transform:translateY(-50%);
+
+    border:none;
+    background:transparent;
+    color: var(--accent-color);
+    font-size:1.8rem;
+    cursor:pointer;
+}
+
+.mute-music:hover{
+    color:var(--background-color);
+}
+
+.mute-music i{
+    background:transparent;
+    padding:12px;
+    border-radius:50%;
+}
+
 .trailer{
     position:relative;
     top: 20px;
@@ -316,4 +362,132 @@ html {
     height: auto;
     z-index: 9999;
     transform: scaleX(-1);
+}
+
+/* Welcome Modal Overlay */
+.welcome-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    background: rgba(8, 12, 30, 0.8);
+    backdrop-filter: blur(8px);
+
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* Welcome Modal Box */
+.welcome-modal {
+    width: 100%;
+    max-width: 500px;
+    padding: 45px 35px;
+
+    text-align: center;
+    background: var(--secondary-color);
+    color: var(--accent-color);
+
+    border: 3px solid var(--primary-color);
+    border-radius: 25px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+}
+
+/* Title */
+.welcome-modal h1 {
+    margin: 0 0 15px;
+
+    font-family: var(--main-font);
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    line-height: 1.2;
+    color: var(--accent-color);
+}
+
+/* Subtitle */
+.welcome-subtitle {
+    margin: 0 0 25px;
+    font-family: "Candal", sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Description */
+.welcome-description {
+    margin: 0 0 25px;
+    font-family: "Candal", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Button */
+#welcomeButton {
+    padding: 13px 30px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: var(--background-color);
+    color: var(--text-color);
+
+    font-family: 'Candal', sans-serif;
+    font-size: 1rem;
+
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#welcomeButton:hover {
+    background: var(--background-color);
+    transform: scale(1.05);
+}
+
+#welcomeButton:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
+/* Button */
+#welcomeButtonNO {
+    padding: 13px 30px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: var(--primary-color);
+    color: var(--text-color);
+
+    font-family: 'Candal', sans-serif;
+    font-size: 1rem;
+
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#welcomeButtonNO:hover {
+    background: var(--background-color);
+    transform: scale(1.05);
+}
+
+#welcomeButton:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
+/* Hidden State */
+.welcome-overlay.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.welcome-overlay.is-hidden .welcome-modal {
+    transform: translateY(15px);
 }

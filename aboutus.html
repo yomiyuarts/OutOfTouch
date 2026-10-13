@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Out of Touch</title>
+    <link rel="icon" type="image/png" href="CSS/assets/favicon.PNG">
 
     <link rel="stylesheet" href="CSS/homepage.css">
     <link rel="stylesheet" href="CSS/global.css">
@@ -35,9 +36,17 @@
     <div class="nav-links">
         <a style="color: #EAF0F1; background-color: var(--primary-color); padding: 10px 20px; border-radius: 30px;">ABOUT US</a>
         <a href="experience.html" style="padding: 10px 20px;">EXPERIENCE HERE</a>
+
+        <button class="mute-music2" id="musicButton" type="button" onclick="toggleMusic()">
+            <i id="musicIcon" class="fa-solid fa-volume-xmark"></i>
+        </button>
         
     </div>
 </div>
+
+<audio id="bgMusic" loop>
+    <source src="CSS/assets/dreamscape.mp3" type="audio/mpeg">
+</audio>
 
 <div class="artworkteam fade-in-element"">
     <h1>MEET THE ARTISTS</h1>

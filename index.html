@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Out of Touch</title>
+    <link rel="icon" type="image/png" href="CSS/assets/favicon.PNG">
 
     <link rel="stylesheet" href="CSS/homepage.css">
     <link rel="stylesheet" href="CSS/global.css">
@@ -25,6 +26,28 @@
 
 <body style="overflow-x: hidden;">
 
+    <div class="welcome-overlay" id="welcomeModal">
+    <div class="welcome-modal">
+        <h1>Welcome to Out of Touch!</h1>
+
+        <p class="welcome-subtitle">
+            An interactive animated film by Re:Touch.
+        </p>
+
+        <p class="welcome-description">
+            Customize your experience in the settings.
+        </p>
+
+        <button type="button" id="welcomeButton">
+            No Thanks!
+        </button>
+
+        <button type="button" id="welcomeButtonNO">
+            Sound's Good!
+        </button>
+    </div>
+</div>
+
     <img class="drawn-char" src="CSS/assets/stick.png">
     <img class="drawn-char2" src="CSS/assets/stick.png">
 
@@ -35,11 +58,20 @@
     <div class="nav-links">
         <a href="aboutus.html">ABOUT US</a>
         <a href="experience.html" style="background-color: transparent; padding: 10px 20px; border-radius: 30px;">EXPERIENCE HERE</a>
+
+        <button class="mute-music" id="musicButton" type="button" onclick="toggleMusic()">
+            <i id="musicIcon" class="fa-solid fa-volume-xmark"></i>
+        </button>
+
         <button class="settings" id="settingsButton" type="button">
             <i class="fa-solid fa-gear"></i>
         </button>
     </div>
 </div>
+
+<audio id="bgMusic" loop>
+    <source src="CSS/assets/dreamscape.mp3" type="audio/mpeg">
+</audio>
 
 <button class="scroll-down" onclick="document.getElementById('experience').scrollIntoView({
     behavior: 'smooth'
@@ -54,6 +86,7 @@
             <source src="CSS/assets/trailer.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+
     </div>
 </div>
 
@@ -120,7 +153,7 @@
 
 </div>
 
-<script src="JS/fade.js"></script>
+<!-- <script src="JS/fade.js"></script> REMOVE TO REACTIVATE --> 
 <script src="JS/settings.js"></script>
 <script src="JS/color.js"></script>
 <script src="JS/font.js"></script>
