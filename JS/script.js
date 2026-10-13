@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Only run music code if the elements actually exist on the current page
     if (audio && icon) {
         // Check if user previously unmuted the music
-        const isMuted = localStorage.getItem("musicMuted") === "true"; 
+        const isMuted = sessionStorage.getItem("musicMuted") === "true"; 
         audio.muted = isMuted;
         
         // Update icon visually based on state
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Track continuous playback position across pages
-        const savedTime = localStorage.getItem("musicTime");
+        const savedTime = sessionStorage.getItem("musicTime");
         if (savedTime) {
             audio.currentTime = parseFloat(savedTime);
         }
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Continuously save the current time of the song
         setInterval(() => {
             if (!audio.paused) {
-                localStorage.setItem("musicTime", audio.currentTime);
+                sessionStorage.setItem("musicTime", audio.currentTime);
             }
         }, 1000);
 
@@ -135,10 +135,10 @@ function toggleMusic() {
         audio.muted = false;
         audio.play().catch(err => console.log("Playback failed:", err));
         icon.className = "fa-solid fa-volume-high";
-        localStorage.setItem("musicMuted", "false");
+        sessionStorage.setItem("musicMuted", "false");
     } else {
         audio.muted = true;
         icon.className = "fa-solid fa-volume-xmark";
-        localStorage.setItem("musicMuted", "true");
+        sessionStorage.setItem("musicMuted", "true");
     }
 }
