@@ -81,7 +81,7 @@ const welcomeButton = document.getElementById("welcomeButton");
 const welcomeButtonNO = document.getElementById("welcomeButtonNO");
 
 // Check if the welcome modal has already been shown
-if (localStorage.getItem("welcomeSeen") === "true") {
+if (sessionStorage.getItem("welcomeSeen") === "true") {
     welcomeModal.classList.add("is-hidden");
 }
 
@@ -91,7 +91,7 @@ function closeWelcomeModal() {
     }
 
     // Remember that the user has seen the welcome modal
-    localStorage.setItem("welcomeSeen", "true");
+    sessionStorage.setItem("welcomeSeen", "true");
 
     // Start background music if it isn't muted
     const audio = document.getElementById("bgMusic");
