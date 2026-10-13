@@ -75,14 +75,19 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- Welcome Modal Setup ---
+ // --- Welcome Modal Setup ---
 const welcomeModal = document.getElementById("welcomeModal");
 const welcomeButton = document.getElementById("welcomeButton");
 const welcomeButtonNO = document.getElementById("welcomeButtonNO");
 
-// Check if the welcome modal has already been shown
-if (sessionStorage.getItem("welcomeSeen") === "true") {
-    welcomeModal.classList.add("is-hidden");
+function lockScroll() {
+    document.documentElement.classList.add("modal-open");
+    document.body.classList.add("modal-open");
+}
+
+function unlockScroll() {
+    document.documentElement.classList.remove("modal-open");
+    document.body.classList.remove("modal-open");
 }
 
 function closeWelcomeModal() {
@@ -90,10 +95,10 @@ function closeWelcomeModal() {
         welcomeModal.classList.add("is-hidden");
     }
 
-    // Remember that the user has seen the welcome modal
+    unlockScroll();
+
     sessionStorage.setItem("welcomeSeen", "true");
 
-    // Start background music if it isn't muted
     const audio = document.getElementById("bgMusic");
 
     if (audio && !audio.muted) {
@@ -103,23 +108,29 @@ function closeWelcomeModal() {
     }
 }
 
-// No Thanks: close the modal
-if (welcomeButton) {
-    welcomeButton.onclick = function () {
-        closeWelcomeModal();
-    };
+if (welcomeModal) {
+    if (sessionStorage.getItem("welcomeSeen") === "true") {
+        welcomeModal.classList.add("is-hidden");
+        unlockScroll();
+    } else {
+        welcomeModal.classList.remove("is-hidden");
+        lockScroll();
+    }
 }
 
-// Sound's Good: open settings and close the modal
+if (welcomeButton) {
+    welcomeButton.onclick = closeWelcomeModal;
+}
+
 if (welcomeButtonNO) {
     welcomeButtonNO.onclick = function () {
+        closeWelcomeModal();
+
         const settingsButton = document.getElementById("settingsButton");
 
         if (settingsButton) {
             settingsButton.click();
         }
-
-        closeWelcomeModal();
     };
 }
 });

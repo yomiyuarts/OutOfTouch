@@ -128,3 +128,10 @@ body.font-changing {
 .welcome-already-seen #welcomeModal {
     display: none !important;
 }
+
+html.modal-open,
+body.modal-open {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+}

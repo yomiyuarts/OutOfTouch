@@ -12,7 +12,7 @@ html {
     justify-content:space-between;
     align-items:center;
     text-align:center;
-    z-index:10000;
+    z-index: 9998;
 }
 
 .nav-bar a{
@@ -319,7 +319,7 @@ html {
     font-size: 2rem;
     Font-family: "Candal", sans-serif;
     cursor: pointer;
-    z-index: 9999;
+    z-index: 9997;
 
     opacity: 1;
     transition: opacity 0.5s ease;
@@ -340,7 +340,7 @@ html {
     left: -3%;
     width: 400px;
     height: auto;
-    z-index: 9999;
+    z-index: 999;
 }
 
 .drawn-char2 {
@@ -349,7 +349,7 @@ html {
     right: -3%;
     width: 400px;
     height: auto;
-    z-index: 9999;
+    z-index: 999;
     transform: scaleX(-1);
 }
 
@@ -424,7 +424,7 @@ html {
     border-radius: 12px;
 
     background: var(--background-color);
-    color: var(--text-color);
+    color: var(--accent-color);
 
     font-family: 'Candal', sans-serif;
     font-size: 1rem;
