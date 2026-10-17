@@ -543,3 +543,29 @@ html {
 .welcome-overlay.is-hidden .welcome-modal {
     transform: translateY(15px);
 }
+
+
+.fullscreen-container {
+    width: 70%;
+    margin: 10px auto 30px;
+    text-align: right;
+}
+
+#fullscreen-button {
+    position: fixed;
+    background-color: var(--primary-color);
+    color: #EAF0F1;
+    font-family: "Candal", sans-serif;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    margin-top: -70px;
+    right: 100px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#fullscreen-button:hover {
+    transform: scale(1.05);
+}

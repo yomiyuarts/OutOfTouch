@@ -37,11 +37,13 @@
     </div>
 </div>
     
-    <canvas id="unity-canvas" width=960 height=540 tabindex="-1" style="margin-top: 10px; width: 70%; aspect-ratio: 16 / 9; background: #231F20"></canvas>
+    <canvas id="unity-canvas" width=640 height=360 tabindex="-1" style="margin-top: 60px; width: 70%; aspect-ratio: 16 / 9; background: #231F20"></canvas>
     <script src="Build/3rdYear 2ndSem.loader.js"></script>
-    <script>
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
+    
+<script>
+    var unityInstance = null;
+
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         var meta = document.createElement('meta');
         meta.name = 'viewport';
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
@@ -53,9 +55,9 @@
         canvas.style.position = "fixed";
 
         document.body.style.textAlign = "left";
-      }
+    }
 
-      createUnityInstance(document.querySelector("#unity-canvas"), {
+    createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/3rdYear 2ndSem.data",
         frameworkUrl: "Build/3rdYear 2ndSem.framework.js",
         codeUrl: "Build/3rdYear 2ndSem.wasm",
@@ -63,12 +65,26 @@
         companyName: "DefaultCompany",
         productName: "GT2_AsteroidsClone",
         productVersion: "1.0",
-        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
-        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      });
-    </script>
+    }).then(function(instance) {
+        unityInstance = instance;
+    }).catch(function(message) {
+        alert(message);
+    });
+
+    function goFullscreen() {
+        if (unityInstance) {
+            unityInstance.SetFullscreen(1);
+        }
+    }
+</script>
 
 <h1 class="ending fade-in-element">The true ending is what you make it to be.</h1>
+
+<div class="fullscreen-container">
+    <button id="fullscreen-button" onclick="goFullscreen()">
+        <i class="fa-solid fa-expand"></i> FULLSCREEN
+    </button>
+</div>
 
 <script src="JS/color.js"></script>
 <script src="JS/font.js"></script>
