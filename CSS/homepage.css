@@ -60,6 +60,31 @@ html {
     color:var(--background-color);
 }
 
+#experience-link {
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 30px;
+    animation: experiencePulse 2s infinite ease-in-out;
+}
+
+@keyframes experiencePulse {
+    0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 5px var(--secondary-color),
+                     0 0 10px var(--secondary-color);
+        box-shadow: 0 0 5px var(--secondary-color);
+    }
+
+    50% {
+        transform: scale(1.08);
+        text-shadow: 0 0 10px var(--secondary-color),
+                     0 0 20px var(--secondary-color);
+        box-shadow: 0 0 15px var(--secondary-color),
+                    0 0 25px var(--secondary-color);
+    }
+}
+
+
 .settings{
     position:absolute;
     right:40px;
@@ -253,6 +278,8 @@ html {
     margin-top: 0;
 }
 
+
+
 .stepinto-button {
     background-color: var(--secondary-color);
     color: var(--accent-color);
@@ -262,7 +289,26 @@ html {
     border-radius: 30px;
     border: none;
     cursor: pointer;
+
+    animation: gglowPulse 2s infinite ease-in-out;
 }
+
+@keyframes gglowPulse {
+    0%, 100% {
+        box-shadow: 0 0 10px var(--secondary-color),
+                    0 0 20px var(--secondary-color);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 20px var(--secondary-color),
+                    0 0 40px var(--secondary-color),
+                    0 0 60px var(--secondary-color);
+        transform: scale(1.05);
+    }
+}
+
+
 
 .stepinto-button:hover {
     background-color: var(--background-color);
@@ -303,6 +349,7 @@ html {
     margin-bottom: -50px;
 }
 
+
 .scroll-down {
     position: fixed;
     bottom: 30px;
@@ -317,13 +364,29 @@ html {
     color: white;
 
     font-size: 2rem;
-    Font-family: "Candal", sans-serif;
+    font-family: "Candal", sans-serif;
     cursor: pointer;
     z-index: 9997;
 
     opacity: 1;
     transition: opacity 0.5s ease;
+
+    animation: glowPulse 2s infinite ease-in-out;
 }
+
+@keyframes glowPulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 15px var(--secondary-color);
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.1);
+        box-shadow: 0 0 30px var(--secondary-color),
+                    0 0 45px var(--secondary-color);
+    }
+}
+
 
 .scroll-down:hover {
     background: var(--background-color);
