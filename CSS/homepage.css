@@ -561,7 +561,7 @@ html {
     border-radius: 30px;
     cursor: pointer;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
-    margin-top: -250px;
+    margin-top: -200px;
     margin-left: 130vh;
 }
 
