@@ -247,19 +247,23 @@
         var script = document.createElement("script");
         script.src = loaderUrl;
 
-        script.onload = function () {
-            createUnityInstance(canvas, config, function (progress) {
-                document.querySelector("#unity-progress-bar-full").style.width =
-                    (100 * progress) + "%";
-            }).then(function (instance) {
-                unityInstance = instance;
+       
+script.onload = function () {
+    createUnityInstance(canvas, config, function (progress) {
+        document.querySelector("#unity-progress-bar-full").style.width =
+            (100 * progress) + "%";
+    }).then(function (instance) {
+        unityInstance = instance;
 
-                document.querySelector("#unity-loading-bar").style.display = "none";
+        document.querySelector("#unity-loading-bar").style.display = "none";
 
-            }).catch(function (message) {
-                unityShowBanner(message, "error");
-            });
-        };
+        loadSavedDrawing();
+
+    }).catch(function (message) {
+        unityShowBanner(message, "error");
+    });
+};
+
 
         script.onerror = function () {
             unityShowBanner(
