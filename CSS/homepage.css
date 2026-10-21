@@ -552,17 +552,17 @@ html {
 }
 
 #fullscreen-button {
-    position: relative;
     background-color: var(--primary-color);
-    color: #EAF0F1;
+    color: var(--text-color);
     font-family: "Candal", sans-serif;
     font-size: 1rem;
     padding: 10px 20px;
     border: none;
     border-radius: 30px;
-    margin-top: -250px;
     cursor: pointer;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+    margin-top: -250px;
+    margin-left: 130vh;
 }
 
 #fullscreen-button:hover {
