@@ -63,6 +63,3 @@ async function loadSavedDrawing() {
         console.error("Could not load drawing:", error);
     }
 }
-
-// Call this after the Unity game has initialized
-loadSavedDrawing();
