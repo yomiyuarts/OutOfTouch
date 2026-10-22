@@ -63,3 +63,5 @@ async function loadSavedDrawing() {
         console.error("Could not load drawing:", error);
     }
 }
+
+loadSavedDrawing();
