@@ -144,7 +144,7 @@ html {
 }
 
 .trailer h1{
-    color:white;
+    color: var(--secondary-color);
     font-size: 6rem;
     font-weight:600;
     font-family: var(--main-font);
@@ -201,7 +201,7 @@ html {
     font-size: 4.5rem;
     font-weight:600;
     padding: 0 0 0 50px;    
-    color:white;
+    color: var(--secondary-color);
     font-family: var(--main-font);
     text-align: left;
     margin-bottom:10px;
@@ -604,4 +604,17 @@ html {
 .download-link:hover {
     background-color: var(--background-color);
     transform: scale(1.05);
+}
+
+.drawn-char,
+.drawn-char2 {
+    filter:
+        drop-shadow(6px 0 0 var(--secondary-color))
+        drop-shadow(-6px 0 0 var(--secondary-color))
+        drop-shadow(0 6px 0 var(--secondary-color))
+        drop-shadow(0 -6px 0 var(--secondary-color))
+        drop-shadow(6px 6px 0 var(--secondary-color))
+        drop-shadow(-6px -6px 0 var(--secondary-color))
+        drop-shadow(6px -6px 0 var(--secondary-color))
+        drop-shadow(-6px 6px 0 var(--secondary-color));
 }
