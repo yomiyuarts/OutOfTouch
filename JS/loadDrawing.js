@@ -1,67 +1,24 @@
 
-async function loadSavedDrawing() {
-    const folder = "/idbfs/716d711bf3bb93657f89578919ec4b16/";
-
-    // Highest priority first
-    const drawingPaths = [
-        folder + "intro_drawing_computer.png",
-        folder + "intro_sketchbook.png",
-        folder + "intro_drawing_bathroom_unfog.png",
-        folder + "intro_drawing_bathroom_fog.png"
-    ];
-
-    const images = document.querySelectorAll(".drawn-char, .drawn-char2");
-
-    // Wait until Unity's filesystem is available
-    const getFS = () =>
-        window.unityInstance?.Module?.FS ||
-        window.unityInstance?.FS ||
-        null;
-
-    let FS = getFS();
-
-    for (let i = 0; !FS && i < 30; i++) {
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        FS = getFS();
-    }
-
-    if (!FS) {
-        console.warn("Unity filesystem is not exposed to the website.");
+window.OnDrawingExported = function (fileName, base64) {
+    if (!fileName || !base64) {
+        console.log("Unity did not return a saved drawing.");
         return;
     }
 
-    // Select the first existing drawing in priority order
-    let selectedPath = null;
+    const imageURL = "data:image/png;base64," + base64;
 
-    for (const path of drawingPaths) {
-        try {
-            if (FS.analyzePath(path).exists) {
-                selectedPath = path;
-                break;
-            }
-        } catch (error) {
-            console.warn("Could not check drawing:", path, error);
-        }
-    }
+    document.querySelectorAll(".drawn-char, .drawn-char2").forEach(function (img) {
+        img.src = imageURL;
+    });
 
-    if (!selectedPath) {
-        console.log("No saved drawings were found.");
+    console.log("Drawing displayed:", fileName);
+};
+
+window.loadSavedDrawing = function () {
+    if (!window.unityInstance) {
+        console.error("Unity has not initialized yet.");
         return;
     }
 
-    try {
-        const bytes = FS.readFile(selectedPath);
-        const blob = new Blob([bytes], { type: "image/png" });
-        const imageURL = URL.createObjectURL(blob);
-
-        images.forEach(img => {
-            img.src = imageURL;
-        });
-
-        console.log("Loaded saved drawing:", selectedPath);
-    } catch (error) {
-        console.error("Could not load drawing:", error);
-    }
-}
-
-loadSavedDrawing();
+    window.unityInstance.SendMessage("DrawingExporter", "ExportDrawing");
+};
