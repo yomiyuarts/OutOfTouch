@@ -13,7 +13,7 @@ body{
     background-attachment: scroll;
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1250px) {
 
     html::before {
         content: "A desktop is required for this experience.\A\A Please access this website on a larger screen.";
