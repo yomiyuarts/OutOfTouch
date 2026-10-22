@@ -154,12 +154,20 @@ function toggleMusic() {
     }
 }
 
-function goFullscreen() {
+document.addEventListener("DOMContentLoaded", function () {
+    const fullscreenButton = document.getElementById("fullscreen-button");
     const alertBox = document.getElementById("fullscreen-alert");
 
-    alertBox.classList.add("show");
+    if (!fullscreenButton || !alertBox) {
+        console.error("Fullscreen button or alert element not found.");
+        return;
+    }
 
-    setTimeout(() => {
-        alertBox.classList.remove("show");
-    }, 5000);
-}
+    fullscreenButton.addEventListener("click", function () {
+        alertBox.classList.add("show");
+
+        setTimeout(() => {
+            alertBox.classList.remove("show");
+        }, 5000);
+    });
+});
