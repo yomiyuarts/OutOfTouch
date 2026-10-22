@@ -153,3 +153,13 @@ function toggleMusic() {
         sessionStorage.setItem("musicMuted", "true");
     }
 }
+
+function goFullscreen() {
+    const alertBox = document.getElementById("fullscreen-alert");
+
+    alertBox.classList.add("show");
+
+    setTimeout(() => {
+        alertBox.classList.remove("show");
+    }, 5000);
+}

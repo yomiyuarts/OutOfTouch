@@ -618,3 +618,27 @@ html {
         drop-shadow(6px -6px 0 var(--secondary-color))
         drop-shadow(-6px 6px 0 var(--secondary-color));
 }
+
+#fullscreen-alert {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(20, 20, 35, 0.95);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    text-align: center;
+    z-index: 99999;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#fullscreen-alert.show {
+    opacity: 1;
+    visibility: visible;
+}
