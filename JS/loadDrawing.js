@@ -55,7 +55,17 @@
         try {
             db = await openUnityDatabase();
 
-            for (const path of DRAWING_PATHS) {
+            // Randomize the order of all four drawings.
+            const shuffledPaths = [...DRAWING_PATHS];
+
+            for (let i = shuffledPaths.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffledPaths[i], shuffledPaths[j]] =
+                    [shuffledPaths[j], shuffledPaths[i]];
+            }
+
+            // Choose the first drawing that actually exists.
+            for (const path of shuffledPaths) {
                 const imageURL = await getDrawing(db, path);
 
                 if (!imageURL) continue;
@@ -74,7 +84,7 @@
                     img.src = imageURL;
                 });
 
-                console.log("Loaded saved drawing:", path);
+                console.log("Random drawing loaded:", path);
                 return;
             }
 
