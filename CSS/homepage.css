@@ -563,10 +563,13 @@ html {
     transition: box-shadow 0.3s ease, transform 0.3s ease;
     margin-top: -250px;
     margin-left: 130vh;
+
+    animation: glowPulse 2s infinite ease-in-out;
 }
 
 #fullscreen-button:hover {
     transform: scale(1.05);
+    background-color: var(--background-color);
 }
 
 .download {
