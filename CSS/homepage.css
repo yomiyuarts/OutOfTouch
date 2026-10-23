@@ -8,6 +8,7 @@
     align-items:center;
     display: flex;
     flex-direction: column;
+    z-index: 0;
 }
 
 .trailer h1{
@@ -190,15 +191,6 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-}
-
-.ending {
-    font-size: 2rem;
-    font-weight: 500;
-    color: white;
-    font-family: var(--main-font);
-    text-align: center;
-    margin-bottom: -50px;
 }
 
 
