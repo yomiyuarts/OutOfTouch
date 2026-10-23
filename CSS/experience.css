@@ -81,3 +81,12 @@
     opacity: 1;
     visibility: visible;
 }
+
+.ending {
+    font-size: 2rem;
+    font-weight: 500;
+    color: white;
+    font-family: var(--main-font);
+    text-align: center;
+    margin-top: -20px;
+}
