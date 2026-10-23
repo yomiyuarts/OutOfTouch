@@ -3,7 +3,7 @@
   const FOLDER = "/idbfs/716d711bf3bb93657f89578919ec4b16/";
   const DRAWING_PATHS = [
     FOLDER + "intro_drawing_computer.png",
-    FOLDER + "intro_sketchbook.png",
+    FOLDER + "intro_drawing_sketchbook.png",
     FOLDER + "intro_drawing_bathroom_unfog.png",
     FOLDER + "intro_drawing_bathroom_fog.png"
   ];
