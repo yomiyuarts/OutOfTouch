@@ -11,6 +11,8 @@
 
     <link rel="stylesheet" href="CSS/homepage.css">
     <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/common.css">
+    <link rel="stylesheet" href="CSS/experience.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
@@ -148,6 +150,13 @@
 
         <div id="unity-warning"></div>
 
+        <div class="fullscreen-container">
+            <button id="fullscreen-button" onclick="goFullscreen()">
+                <i class="fa-solid fa-expand"></i>
+            </button>
+        </div>
+        
+    </div>
     </div>
 
     <script>
@@ -272,11 +281,6 @@ script.onload = function () {
         The true ending is what you make it to be.
     </h1>
 
-    <div class="fullscreen-container">
-        <button id="fullscreen-button" onclick="goFullscreen()">
-            <i class="fa-solid fa-expand"></i>
-        </button>
-    </div>
 
     <div id="fullscreen-alert">
     Please wait for the experience to load before entering fullscreen.
@@ -285,10 +289,10 @@ script.onload = function () {
 </div>
 
     <div class="download">
-        <h1 class="get fade-in-element">Download the full experience</h1>
+        <h1 class="get">Download the full experience</h1>
         <!--<h2 class="sub fade-in-element">Get the complete version of the film here!</h2>-->
 
-        <div class="download-links fade-in-element">
+        <div class="download-links">
         <a class="download-link" href="https://github.com/yomiyuarts/OutOfTouch/releases/download/Windownload/Windows_Out-of-Touch.zip" target="_blank">
             <i class="fa-brands fa-windows"></i> WINDOWS DOWNLOAD
         </a>
