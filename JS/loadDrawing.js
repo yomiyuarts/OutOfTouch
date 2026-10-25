@@ -1,146 +1,225 @@
+
 (function () {
-  const DB_NAME = "/idbfs";
-  const FOLDER = "/idbfs/716d711bf3bb93657f89578919ec4b16/";
-  const DRAWING_PATHS = [
-    FOLDER + "intro_drawing_computer.png",
-    FOLDER + "intro_drawing_sketchbook.png",
-    FOLDER + "intro_drawing_bathroom_unfog.png",
-    FOLDER + "intro_drawing_bathroom_fog.png"
-  ];
+    const DB_NAME = "/idbfs";
+    const FOLDER = "/idbfs/716d711bf3bb93657f89578919ec4b16/";
 
-  function openUnityDatabase() {
-    return new Promise(function (resolve, reject) {
-      const request = indexedDB.open(DB_NAME);
-      request.onsuccess = function () { resolve(request.result); };
-      request.onerror = function () { reject(request.error); };
-    });
-  }
+    const DRAWING_PATHS = [
+        FOLDER + "intro_drawing_computer.png",
+        FOLDER + "intro_drawing_sketchbook.png",
+        FOLDER + "intro_drawing_bathroom_unfog.png",
+        FOLDER + "intro_drawing_bathroom_fog.png"
+    ];
 
-  function getDrawing(db, path) {
-    return new Promise(function (resolve, reject) {
-      const transaction = db.transaction("FILE_DATA", "readonly");
-      const request = transaction.objectStore("FILE_DATA").get(path);
-      
-      request.onsuccess = function () {
-        const file = request.result;
-        if (!file || !file.contents) {
-          resolve(null);
-          return;
-        }
+    const SELECTOR = ".drawn-char, .drawn-char2, .drawn-char3, .drawn-char4";
 
-        const bytes = new Uint8Array(file.contents);
-        const blob = new Blob([bytes], { type: "image/png" });
-        resolve(URL.createObjectURL(blob));
-      };
-      
-      request.onerror = function () { reject(request.error); };
-    });
-  }
+    const validDrawings = {};
+    const assignedDrawings = new Map();
+    let isReady = false;
 
-  // New function to inspect image data for real content
-  function isDrawingBlank(imgElement) {
-    try {
-      const canvas = document.createElement("canvas");
-      canvas.width = imgElement.naturalWidth || imgElement.width;
-      canvas.height = imgElement.naturalHeight || imgElement.height;
-      
-      if (canvas.width === 0 || canvas.height === 0) return true;
-
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(imgElement, 0, 0);
-      
-      // Pull all pixel RGBA data
-      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imgData.data;
-
-      let firstR = data[0], firstG = data[1], firstB = data[2], firstA = data[3];
-      let isIdenticalToFirstPixel = true;
-      let hasAnyVisiblePixels = false;
-
-      for (let i = 0; i < data.length; i += 4) {
-        let r = data[i];
-        let g = data[i + 1];
-        let b = data[i + 2];
-        let a = data[i + 3];
-
-        // Check 1: If there is ANY alpha transparency above 0, it has color structure
-        if (a > 0) {
-          hasAnyVisiblePixels = true;
-        }
-
-        // Check 2: See if it's just a single solid color block (like all white or all black)
-        if (r !== firstR || g !== firstG || b !== firstB || a !== firstA) {
-          isIdenticalToFirstPixel = false;
-        }
-      }
-
-      // It's blank if it's completely transparent OR 100% one solid flat color
-      return !hasAnyVisiblePixels || isIdenticalToFirstPixel;
-    } catch (e) {
-      console.error("Error analyzing pixel data:", e);
-      return false; // Safely fall back to showing it if canvas analysis fails
+    function openUnityDatabase() {
+        return new Promise(function (resolve, reject) {
+            const request = indexedDB.open(DB_NAME);
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+        });
     }
-  }
 
-  async function loadSavedDrawing() {
-    let db;
-    try {
-      db = await openUnityDatabase();
-      const shuffledPaths = [...DRAWING_PATHS];
-      for (let i = shuffledPaths.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffledPaths[i], shuffledPaths[j]] = [shuffledPaths[j], shuffledPaths[i]];
-      }
+    function getDrawing(db, path) {
+        return new Promise(function (resolve, reject) {
+            const request = db.transaction("FILE_DATA", "readonly")
+                .objectStore("FILE_DATA").get(path);
 
-      for (const path of shuffledPaths) {
+            request.onsuccess = function () {
+                const file = request.result;
+
+                if (!file || !file.contents) {
+                    resolve(null);
+                    return;
+                }
+
+                const bytes = new Uint8Array(file.contents);
+                const blob = new Blob([bytes], { type: "image/png" });
+
+                resolve(URL.createObjectURL(blob));
+            };
+
+            request.onerror = () => reject(request.error);
+        });
+    }
+
+    function loadImage(url) {
+        return new Promise(function (resolve) {
+            const img = new Image();
+
+            img.onload = function () {
+                try {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = img.naturalWidth;
+                    canvas.height = img.naturalHeight;
+
+                    if (!canvas.width || !canvas.height) {
+                        resolve(false);
+                        return;
+                    }
+
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0);
+
+                    const data = ctx.getImageData(
+                        0, 0, canvas.width, canvas.height
+                    ).data;
+
+                    let visible = false;
+                    let first = null;
+                    let different = false;
+
+                    for (let i = 0; i < data.length; i += 4) {
+                        const pixel = [
+                            data[i],
+                            data[i + 1],
+                            data[i + 2],
+                            data[i + 3]
+                        ];
+
+                        if (pixel[3] > 0) visible = true;
+
+                        if (first === null) {
+                            first = pixel;
+                        } else if (
+                            pixel[0] !== first[0] ||
+                            pixel[1] !== first[1] ||
+                            pixel[2] !== first[2] ||
+                            pixel[3] !== first[3]
+                        ) {
+                            different = true;
+                        }
+                    }
+
+                    resolve(visible && different);
+                } catch (error) {
+                    console.warn("Could not inspect drawing:", error);
+                    resolve(false);
+                }
+            };
+
+            img.onerror = () => resolve(false);
+            img.src = url;
+        });
+    }
+
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+
+        return array;
+    }
+
+    function setDrawing(element, path) {
+        assignedDrawings.set(element, path);
+        element.style.backgroundImage = `url("${validDrawings[path]}")`;
+    }
+
+    
+function randomizeCharacter(element) {
+    if (!isReady) return;
+
+    const currentPath = assignedDrawings.get(element);
+    const allPaths = Object.keys(validDrawings);
+
+    // Prefer drawings not currently used by other characters.
+    let choices = allPaths.filter(path => {
+        if (path === currentPath) return false;
+
+        const usedByOthers = [...assignedDrawings.entries()].some(
+            ([otherElement, assignedPath]) =>
+                otherElement !== element && assignedPath === path
+        );
+
+        return !usedByOthers;
+    });
+
+    // If no unused drawings are available, allow duplicates.
+    if (!choices.length) {
+        choices = allPaths.filter(path => path !== currentPath);
+    }
+
+    // If only one valid drawing exists, keep it.
+    if (!choices.length) {
+        return;
+    }
+
+    const nextPath = choices[
+        Math.floor(Math.random() * choices.length)
+    ];
+
+    setDrawing(element, nextPath);
+}
+
+
+    async function loadSavedDrawing() {
+        let db;
+
         try {
-          const imageURL = await getDrawing(db, path);
-          if (!imageURL) continue; 
+            db = await openUnityDatabase();
 
-          const images = document.querySelectorAll(".drawn-char, .drawn-char2");
-          if (!images.length) {
-            URL.revokeObjectURL(imageURL);
-            console.warn("No target image elements found.");
-            return;
-          }
+            for (const path of DRAWING_PATHS) {
+                try {
+                    const url = await getDrawing(db, path);
 
-          // Load image into memory to check its pixels
-          const testImg = new Image();
-          const loaded = await new Promise((resolve) => {
-            testImg.onload = () => resolve(true);
-            testImg.onerror = () => resolve(false);
-            testImg.src = imageURL;
-          });
+                    if (!url) continue;
 
-          // Verify if it renders and actually has drawings on it
-          if (!loaded || isDrawingBlank(testImg)) {
-            console.warn(`[Skipped Blank Template] ${path} is valid file-wise, but contains no actual player drawings.`);
-            URL.revokeObjectURL(imageURL);
-            continue; 
-          }
+                    if (await loadImage(url)) {
+                        validDrawings[path] = url;
+                    } else {
+                        URL.revokeObjectURL(url);
+                        console.log("Skipped blank drawing:", path);
+                    }
+                } catch (error) {
+                    console.warn("Skipped drawing:", path, error);
+                }
+            }
 
-          // If it passes pixel checks, paint it to your webpage elements
-          images.forEach(function (img) {
-            img.src = imageURL;
-          });
-          console.log("Successfully verified and loaded user drawing:", path);
-          return; 
-        } catch (fileError) {
-          console.warn(`Error processing file ${path}, skipping...`, fileError);
-        }
-      }
-      console.log("No non-blank user drawings found in IndexedDB.");
-    } catch (error) {
-      console.error("Could not access the Unity database:", error);
-    } finally {
-      if (db) db.close();
+            const characters = [...document.querySelectorAll(SELECTOR)];
+            const paths = shuffle(Object.keys(validDrawings));
+
+            // Assign unique drawings to each character.
+            // Assign unique drawings first, allowing duplicates if needed.
+characters.forEach(function (element, index) {
+    if (paths.length > 0) {
+        setDrawing(element, paths[index % paths.length]);
+    } else {
+        assignedDrawings.delete(element);
     }
-  }
+});
 
-  window.loadSavedDrawing = loadSavedDrawing;
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", loadSavedDrawing);
-  } else {
-    loadSavedDrawing();
-  }
+            isReady = true;
+
+            console.log(
+                "Loaded", paths.length,
+                "valid drawings for", characters.length, "characters."
+            );
+        } catch (error) {
+            console.error("Could not access Unity database:", error);
+        } finally {
+            if (db) db.close();
+        }
+    }
+
+    document.addEventListener("click", function (event) {
+        const character = event.target.closest(SELECTOR);
+
+        if (character) {
+            randomizeCharacter(character);
+        }
+    });
+
+    window.loadSavedDrawing = loadSavedDrawing;
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", loadSavedDrawing);
+    } else {
+        loadSavedDrawing();
+    }
 })();
