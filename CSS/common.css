@@ -148,10 +148,9 @@ html {
     font-size: clamp(1.3vw, 1.3vw, 24px);
     font-family: "Candal", sans-serif;
     padding: 10px 0;
-    text-align: center; 
+    text-align: center;
     width: 100%;
     position: relative;
     left: 0;
     border-radius: 70px 70px 0 0;
-    margin-bottom: 0%;
 }
