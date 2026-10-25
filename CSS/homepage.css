@@ -336,7 +336,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    color: var(--accent-color);
 }
 
 .paper img {
@@ -354,6 +353,7 @@ body {
     text-align: justify;
     margin: clamp(10px, 3vh, 50px) clamp(20px, 5vw, 80px);
     padding: 0;
+    color: var(--accent-color);
 }
 
 .paper-text h1 {
@@ -362,6 +362,27 @@ body {
     font-weight: 600;
     text-align: center; 
     padding: 0;
+    color: var(--accent-color);
+}
+
+.paper-text2 p {
+    font-size: clamp(1.3vw, 1.3vw, 24px);
+    font-family: "Cantarell", sans-serif;
+    font-weight: 520;
+    line-height: 1.5;
+    text-align: justify;
+    margin: clamp(10px, 3vh, 50px) clamp(20px, 5vw, 80px);
+    padding: 0;
+    color: var(--text-color);
+}
+
+.paper-text2 h1 {
+    font-size: clamp(4vw, 5vw, 60px);
+    font-family: var(--main-font);
+    font-weight: 600;
+    text-align: center; 
+    padding: 0;
+    color: var(--text-color);
 }
 
 .pencil {
