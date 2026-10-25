@@ -64,15 +64,48 @@ body {
 .drawn-char3,
 .drawn-char4 {
     filter:
-        drop-shadow(clamp(3px, 0.3vw, 6px) 0 0 #ededed)
-        drop-shadow(clamp(-6px, -0.3vw, -3px) 0 0 #ededed)
-        drop-shadow(0 clamp(3px, 0.3vw, 6px) 0 #ededed)
-        drop-shadow(0 clamp(-6px, -0.3vw, -3px) 0 #ededed)
-        drop-shadow(clamp(3px, 0.3vw, 6px) clamp(3px, 0.3vw, 6px) 0 #ededed)
-        drop-shadow(clamp(-6px, -0.3vw, -3px) clamp(-6px, -0.3vw, -3px) 0 #ededed)
-        drop-shadow(clamp(3px, 0.3vw, 6px) clamp(-6px, -0.3vw, -3px) 0 #ededed)
-        drop-shadow(clamp(-6px, -0.3vw, -3px) clamp(3px, 0.3vw, 6px) 0 #ededed);
+        drop-shadow(clamp(6px, 6vw, 6px) 0 0 #ededed)
+        drop-shadow(clamp(-6px, -6vw, -6px) 0 0 #ededed)
+        drop-shadow(0 clamp(6px, 6vw, 6px) 0 #ededed)
+        drop-shadow(0 clamp(-6px, -6vw, -6px) 0 #ededed)
+        drop-shadow(clamp(6px, 6vw, 6px) clamp(6px, 6vw, 6px) 0 #ededed)
+        drop-shadow(clamp(-6px, -6vw, -6px) clamp(-6px, -6vw, -6px) 0 #ededed)
+        drop-shadow(clamp(6px, 6vw, 6px) clamp(-6px, -6vw, -6px) 0 #ededed)
+        drop-shadow(clamp(-6px, -6vw, -6px) clamp(6px, 6vw, 6px) 0 #ededed);
 }
+
+.drawn-char,
+.drawn-char2,
+.drawn-char3,
+.drawn-char4 {
+    transform-origin: center;
+}
+
+.drawn-char.pop,
+.drawn-char2.pop,
+.drawn-char3.pop,
+.drawn-char4.pop {
+    animation: drawingPop 0.3s ease-out;
+}
+
+@keyframes drawingPop {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.15);
+    }
+
+    70% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 
 .trailer {
     display: flex;

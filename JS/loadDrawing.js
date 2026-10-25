@@ -116,10 +116,24 @@
         return array;
     }
 
-    function setDrawing(element, path) {
-        assignedDrawings.set(element, path);
-        element.style.backgroundImage = `url("${validDrawings[path]}")`;
-    }
+    
+function setDrawing(element, path) {
+    assignedDrawings.set(element, path);
+    element.style.backgroundImage = `url("${validDrawings[path]}")`;
+
+    element.classList.remove("pop");
+
+    // Restart the animation every time the drawing changes.
+    void element.offsetWidth;
+
+    element.classList.add("pop");
+
+    element.addEventListener("animationend", function handler() {
+        element.classList.remove("pop");
+        element.removeEventListener("animationend", handler);
+    });
+}
+
 
     
 function randomizeCharacter(element) {
