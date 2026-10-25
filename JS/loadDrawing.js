@@ -136,39 +136,46 @@ function setDrawing(element, path) {
 
 
     
-function randomizeCharacter(element) {
-    if (!isReady) return;
+async function randomizeCharacter(element) {
+    let db;
 
-    const currentPath = assignedDrawings.get(element);
-    const allPaths = Object.keys(validDrawings);
+    try {
+        db = await openUnityDatabase();
 
-    // Prefer drawings not currently used by other characters.
-    let choices = allPaths.filter(path => {
-        if (path === currentPath) return false;
+        const paths = shuffle([...DRAWING_PATHS]);
+        let nextPath = null;
 
-        const usedByOthers = [...assignedDrawings.entries()].some(
-            ([otherElement, assignedPath]) =>
-                otherElement !== element && assignedPath === path
-        );
+        for (const path of paths) {
+            const url = await getDrawing(db, path);
 
-        return !usedByOthers;
-    });
+            if (!url) continue;
 
-    // If no unused drawings are available, allow duplicates.
-    if (!choices.length) {
-        choices = allPaths.filter(path => path !== currentPath);
+            if (await loadImage(url)) {
+                const oldUrl = validDrawings[path];
+
+                validDrawings[path] = url;
+
+                if (oldUrl && oldUrl !== url) {
+                    URL.revokeObjectURL(oldUrl);
+                }
+
+                if (path !== assignedDrawings.get(element)) {
+                    nextPath = path;
+                    break;
+                }
+            } else {
+                URL.revokeObjectURL(url);
+            }
+        }
+
+        if (nextPath) {
+            setDrawing(element, nextPath);
+        }
+    } catch (error) {
+        console.error("Could not refresh saved drawings:", error);
+    } finally {
+        if (db) db.close();
     }
-
-    // If only one valid drawing exists, keep it.
-    if (!choices.length) {
-        return;
-    }
-
-    const nextPath = choices[
-        Math.floor(Math.random() * choices.length)
-    ];
-
-    setDrawing(element, nextPath);
 }
 
 
@@ -222,12 +229,12 @@ characters.forEach(function (element, index) {
     }
 
     document.addEventListener("click", function (event) {
-        const character = event.target.closest(SELECTOR);
+    const character = event.target.closest(".drawn-char2");
 
-        if (character) {
-            randomizeCharacter(character);
-        }
-    });
+    if (character) {
+        randomizeCharacter(character);
+    }
+});
 
     window.loadSavedDrawing = loadSavedDrawing;
 
