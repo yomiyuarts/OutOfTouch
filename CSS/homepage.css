@@ -240,7 +240,7 @@ body {
     justify-content: center;
     align-items: center;  
     flex-direction: column;
-    margin-top: clamp(10vh, 10vh, 100px);
+    margin-top: clamp(5%, 5%, 100px);
 }
 
 .trailer img {
