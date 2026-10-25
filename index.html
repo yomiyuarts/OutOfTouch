@@ -56,78 +56,86 @@
     </div>
 </div>
 
-    <img class="drawn-char" src="CSS/assets/stick.png">
-    <img class="drawn-char2" src="CSS/assets/stick.png">
+ <div class="nav-bar">
+        <a class="prodname">
+        <span class="logo-image"></span>
+        </a>
+        <div class="nav-links">
+            <a style="color: #EAF0F1;
+                    background-color: var(--accent-color); padding: 10px 20px; border-radius: 30px; margin-left: 60px;">HOME</a>
+            <a href="aboutus.html"">ABOUT US</a>
+            <a href="experience.html" id="experience-link">EXPERIENCE HERE</a>
 
-<div class="nav-bar">
-    <a href="#trailer" id="scrollToMain" class="prodname">
-    <span class="logo-image"></span>
-    </a>
-    <div class="nav-links">
-        <a href="aboutus.html">ABOUT US</a>
-        <a href="experience.html" id="experience-link">EXPERIENCE HERE</a>
-
-        <button class="mute-music" id="musicButton" type="button" onclick="toggleMusic()">
+            <button class="mute-music" id="musicButton" type="button" onclick="toggleMusic()">
             <i id="musicIcon" class="fa-solid fa-volume-xmark"></i>
-        </button>
+            </button>
 
-        <button class="settings" id="settingsButton" type="button">
-            <i class="fa-solid fa-gear"></i>
-        </button>
+            <button class="settings" id="settingsButton" type="button">
+                <i class="fa-solid fa-gear"></i>
+            </button>
+        </div>
     </div>
-</div>
 
-<audio id="bgMusic" loop>
-    <source src="CSS/assets/dreamscape.mp3" type="audio/mpeg">
-</audio>
+    <audio id="bgMusic" loop>
+        <source src="CSS/assets/dreamscape.mp3" type="audio/mpeg">
+    </audio>
 
-<button class="scroll-down" onclick="document.getElementById('experience').scrollIntoView({
+    <button class="scroll-down" onclick="document.getElementById('experience').scrollIntoView({
     behavior: 'smooth'
-})">
+    })">
     Start the Experience
-</button>
+    </button>
 
-<div class="trailer fade-in-element" id="trailer">
-    <h1>OUT OF TOUCH</h1>
-    <div class="image-box">
-        <video height="auto" width="1280px" playsinline autoplay muted loop>
-            <source src="CSS/assets/trailer.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-
+    <div class="trailer">
+        <div class="drawn-char"></div>
+        <div class="drawn-char2"></div>
+        <div class="frog"></div>
+        <div class="duck"></div>
+        <img src="CSS/assets/ootlogo.png" alt="Out of Touch Logo" class="fade-in-element">
+        
+        <div class="trailervid fade-in-element">  
+            <video id="trailerVideo" autoplay muted loop>
+                <source src="CSS/assets/trailer.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </div>
-</div>
 
-<div class="description fade-in-element">
-    <div class="image-box2">
-        <img src="CSS/assets/wakeup.PNG">
-    </div>
-    <div class="text-box">
-        <h1>SYNOPSIS</h1>
+    <section class="paper">
+        <div class="stars"></div>
+        <div class="eraser"></div>
+        <div class="frog2"></div>
+        <img src="CSS/assets/mc.png" alt="MC" class="fade-in-element">
+
+        <div class="paper-text fade-in-element">
+            <h1>SYNOPSIS</h1>
         <p>Out of Touch is a real-time interactive animation film about MC, an artist who has made it in the creative industry and succeeded in their dreams. 
             However, they struggle to get up in the morning for a purpose, feeling lost as they try to search for the motivation. 
             Enter into their psyche and go through their past, discover their story, make decisions, and help them realize their true feelings.</p>
-    </div>
-</div>
-
-<div class="description2 fade-in-element">
-    <div class="text-box">
+        </div>
+    </section>
+            
+    <section class="intanima">
+        <div class="paper-text fade-in-element">
         <h1>INTERACTIVE ANIMATION</h1>
         <p>Interactive animation is the graphic and visual changes that happen via user input whether through clicks, hovers, scrolls, or uploaded media.
             It is most recognizable in UI/UX design, but in our film it is those inputs that determine the experience of the viewer and how they change the story.</p>
-    </div>
-    <div class="image-box3">
-        <img src="CSS/assets/draw.png">
-    </div>
-</div>
+        </div>
 
-<div class="stepinto fade-in-element">
-    <button class="stepinto-button" onclick="window.location.href='experience.html'">STEP INTO THE EXPERIENCE</button>
-</div>
+        <img src="CSS/assets/intanima.png" alt="Interactive Animation" class="fade-in-element">
+    </div>
+    </section>
 
-<footer class="footer" id="experience">
+    <section class="stepinto">
+        <div class="pencil"></div>
+        <div class="drawn-char3"></div>
+        <div class="multiply"></div>
+        <button class="stepinto-button fade-in-element" onclick="window.location.href='experience.html'">STEP INTO THE EXPERIENCE</button>
+    </section>
+
+    <footer class="footer" id="experience">
     <p>© 2026 Re:Touch All rights reserved.</p>
-</footer>
+    </footer>
 
 
 

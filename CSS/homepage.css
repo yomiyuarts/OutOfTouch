@@ -1,160 +1,289 @@
-.trailer{
-    position:relative;
-    top: 20px;
-    left:0;
-    width:100%;
-    height:100%;
-    justify-content:center;
-    align-items:center;
+body {
+    gap: clamp(10vh, 10vh, 100px);
+}
+
+.drawn-char {
+    position: absolute;
+    top: 6%;
+    left: 0;
+    width: 25%;
+    aspect-ratio: 1 / 1;
+    z-index: 1;
+    background-image: url('assets/stick.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.drawn-char2 {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    width: 25%;
+    aspect-ratio: 1 / 1;
+    z-index: 1;
+    transform: scaleX(-1);
+    background-image: url('assets/stick.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.duck {
+    position: absolute;
+    top: 35%;
+    left: 85%;
+    width: 20%;
+    aspect-ratio: 1 / 1;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    background-image: url('assets/duck.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    rotate: 10deg;
+}
+
+.frog {
+    position: absolute;
+    top: 72%;
+    left: 12%;
+    width: 20%;
+    aspect-ratio: 1 / 1;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    background-image: url('assets/frog.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    rotate: -10deg;
+}
+
+.drawn-char,
+.drawn-char2,
+.drawn-char3,
+.drawn-char4 {
+    filter:
+        drop-shadow(clamp(3px, 0.3vw, 6px) 0 0 #ededed)
+        drop-shadow(clamp(-6px, -0.3vw, -3px) 0 0 #ededed)
+        drop-shadow(0 clamp(3px, 0.3vw, 6px) 0 #ededed)
+        drop-shadow(0 clamp(-6px, -0.3vw, -3px) 0 #ededed)
+        drop-shadow(clamp(3px, 0.3vw, 6px) clamp(3px, 0.3vw, 6px) 0 #ededed)
+        drop-shadow(clamp(-6px, -0.3vw, -3px) clamp(-6px, -0.3vw, -3px) 0 #ededed)
+        drop-shadow(clamp(3px, 0.3vw, 6px) clamp(-6px, -0.3vw, -3px) 0 #ededed)
+        drop-shadow(clamp(-6px, -0.3vw, -3px) clamp(3px, 0.3vw, 6px) 0 #ededed);
+}
+
+.trailer {
     display: flex;
+    justify-content: center;
+    align-items: center;  
     flex-direction: column;
-    z-index: 0;
+    margin-top: clamp(10vh, 10vh, 100px);
 }
 
-.trailer h1{
-    color: var(--secondary-color);
-    font-size: 6rem;
-    font-weight:600;
-    font-family: var(--main-font);
-    margin:0;
-    margin-bottom:5px;
-    margin-top: 70px;
+.trailer img {
+    width: 100%;
+    height: auto;
+    max-width: 80vh;
+    border-radius: 10px;
+    margin-top: clamp(5px, 1vh, 2px);
 }
 
-.image-box{
-    width:1280px;
-    height:720px;
-    border-radius:30px;
-    overflow:hidden;
-    background:var(--secondary-color);
-    display:flex;
-    justify-content:center;
-    align-items:center; 
+.trailervid {
+  position: relative;
+  width: auto;
+  height: 60vh;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px; 
 }
 
-.image-box img{
-    width:98%;
-    height:98%;
-    object-fit:contain;
-    border-radius:30px;
+.trailervid::before {
+  content: "";
+  position: absolute;
+  top: -7vh;
+  left: -7vh;
+  right: -7vh;
+  bottom: -7vh;
+  background-image: url('assets/bgpaper.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  z-index: -1;
 }
 
-.description{
-    width:100%;
-    height:200px;
-    border-radius:30px;
-    margin-top:300px;
-    display:flex;
-    justify-content:center;
-    align-items:center; 
+#trailerVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30px;
 }
 
-.text-box{
-    display:flex;
-    flex-direction:column;
-    justify-content:left;
-    align-items:left; 
+.stars {
+    position: absolute;
+    top: 102%;
+    left: 22%;
+    width: 40%;
+    height: 40%;
+    background-image: url('assets/stars.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
 }
 
-.text-box p{
-    font-size: 1.5rem;
-    font-weight:500;
-    padding: 0 50px 0 50px;
-    color:white;
+.eraser {
+    position: absolute;
+    top: 190%;
+    left: -15%;
+    width: 40%;
+    height: 40%;
+    background-image: url('assets/eraser.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+.frog2 {
+    position: absolute;
+    top: 175%;
+    left: 78%;
+    width: 20%;
+    aspect-ratio: 1 / 1;
+    z-index: 1;
+    transform: scaleX(-1);
+    background-image: url('assets/frog.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    rotate: -10deg;
+}
+
+
+.paper {
+    width: 100%;
+    height: 100vh;
+    background-image: url('assets/paper.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: var(--accent-color);
+}
+
+.paper img {
+    width: auto;
+    height: 110%;
+    max-width: 80vh;
+    margin-top: clamp(10px, 10vh, 100px);
+}
+
+.paper-text p {
+    font-size: clamp(1.3vw, 1.3vw, 24px);
     font-family: "Cantarell", sans-serif;
+    font-weight: 550;
+    line-height: 1.5;
     text-align: justify;
+    margin: clamp(10px, 3vh, 50px) clamp(20px, 5vw, 80px);
+    padding: 0;
 }
 
-.text-box h1{
-    font-size: 4.5rem;
-    font-weight:600;
-    padding: 0 0 0 50px;    
-    color: var(--secondary-color);
+.paper-text h1 {
+    font-size: clamp(4vw, 5vw, 60px);
     font-family: var(--main-font);
-    text-align: left;
-    margin-bottom:10px;
+    font-weight: 600;
+    text-align: center; 
+    padding: 0;
 }
 
-.description img{
-    width: 98%;
-    height: 98%;
-    object-fit: cover;
-    margin-right: 20px;
-    border-radius: 0 30px 30px 0;
+.pencil {
+    position: absolute;
+    top: 260%;
+    left: 65%;
+    width: 45%;
+    aspect-ratio: 1 / 1;
+    z-index: 1;
+    transform: scaleX(-1);
+    background-image: url('assets/pencil.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    rotate: 160deg;
 }
 
-.image-box2 {
-    width:140%;
-    height:700px;
-    border-radius:0 30px 30px 0;
-    overflow:hidden;
-    background:var(--secondary-color);
-    display:flex;
-    justify-content:center;
-    align-items:center; 
+
+
+.drawn-char3 {
+    position: absolute;
+    top: 285%;
+    left: -3%;
+    width: 25%;
+    aspect-ratio: 1 / 1;
+    z-index: 1;
+    background-image: url('assets/stick.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.description2 {
-    width:100%;
-    height:200px;
-    border-radius:30px;
-    margin-top:450px;
-    display:flex;
-    justify-content:center;
-    align-items:center; 
+.intanima {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: var(--text-color);
 }
 
-.description2 img{
-    width: 98%;
-    height: 98%;
-    object-fit: cover;
-    margin-left: 20px;
-    border-radius: 30px 0 0 30px;
+.intanima img {
+    width: auto;
+    height: 65%;
+    width: auto;
+    margin: clamp(10px, 3vh, 50px) clamp(20px, 5vw, 80px);
+    rotate: 5deg;
 }
 
-.image-box3 {
-    width:120%;
-    height:700px;
-    border-radius: 30px 0 0 30px;
-    overflow:hidden;
-    background:var(--secondary-color);
-    display:flex;
-    justify-content:center;
-    align-items:center; 
-}
-
-.stepinto {
+.multiply {
     background-image:
-        linear-gradient(rgba(35,75,125,.45), rgba(35,75,125,.45)),
-        url("assets/choice.png");
+        linear-gradient(rgba(35,75,125,.45), rgba(35,75,125,.45));
 
     background-color:var(--background-color);
     background-size:100% auto;
     background-repeat:no-repeat;
     background-position:top center;
+    mix-blend-mode: multiply;
 
-    background-blend-mode: multiply;
-    position: relative;
-    top: 300px;
-    left: 0;
     width: 100%;
-    height: 900px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    margin-top: 0;
+    height: 100vh;
+    position: absolute;
 }
 
-
+.stepinto {
+    width: 100%;
+    height: 100vh;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('assets/drawonwall.png');
+    background-size: cover;
+    background-position: center;
+}
 
 .stepinto-button {
     background-color: var(--secondary-color);
     color: var(--accent-color);
-    font-size: 2rem;
+    font-size: clamp(1.5vw, 1.5vw, 24px);
     font-family: "Candal", sans-serif;
-    padding: 20px 40px;
-    border-radius: 30px;
+    padding: clamp(10px, 1.5vw, 20px) clamp(20px, 3vw, 40px);
+    border-radius: clamp(15px, 2.25vw, 30px);
     border: none;
     cursor: pointer;
 
@@ -163,23 +292,18 @@
 
 @keyframes gglowPulse {
     0%, 100% {
-        box-shadow: 0 0 10px var(--secondary-color),
-                    0 0 20px var(--secondary-color);
         transform: scale(1);
     }
 
     50% {
-        box-shadow: 0 0 20px var(--secondary-color),
-                    0 0 40px var(--secondary-color),
-                    0 0 60px var(--secondary-color);
         transform: scale(1.05);
     }
 }
 
-
 .stepinto-button:hover {
     background-color: var(--background-color);
 }
+
 
 .scroll-down {
     opacity: 1;
@@ -196,18 +320,18 @@
 
 .scroll-down {
     position: fixed;
-    bottom: 30px;
+    bottom: clamp(10px, 2vh, 30px);
     left: 50%;
     transform: translateX(-50%);
 
-    padding: 12px 24px;
+    padding: clamp(6px, 0.7vw, 12px) clamp(12px, 1.4vw, 24px);
     border: none;
     border-radius: 100px;
 
     background: var(--primary-color);
     color: white;
 
-    font-size: 2rem;
+    font-size: clamp(1.5vw, 1.5vw, 24px);
     font-family: "Candal", sans-serif;
     cursor: pointer;
     z-index: 9997;
@@ -221,13 +345,10 @@
 @keyframes glowPulse {
     0%, 100% {
         transform: translateX(-50%) scale(1);
-        box-shadow: 0 0 15px var(--secondary-color);
     }
 
     50% {
         transform: translateX(-50%) scale(1.1);
-        box-shadow: 0 0 30px var(--secondary-color),
-                    0 0 45px var(--secondary-color);
     }
 }
 
