@@ -96,7 +96,7 @@ html {
 /* Settings Button */
 .settings{
     position:absolute;
-    right:40px;
+    right: 2%;
     top:50%;
     transform:translateY(-50%);
 
@@ -108,7 +108,7 @@ html {
 }
 
 .settings:hover{
-    color:var(--background-color);
+    color:var(--text-color);
 }
 
 .settings i{
@@ -120,7 +120,7 @@ html {
 /* Mute Music */
 .mute-music{
     position:absolute;
-    right: clamp(8vh, 10vh, 100px);
+    right: 5%;
     top:50%;
     transform:translateY(-50%);
 
@@ -132,7 +132,7 @@ html {
 }
 
 .mute-music:hover{
-    color:var(--background-color);
+    color:var(--text-color);
 }
 
 .mute-music i{

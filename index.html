@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
 
     <script>
-    if (sessionStorage.getItem("welcomeSeen") === "true") {
+    if (localStorage.getItem("welcomeSeen") === "true") {
         document.documentElement.classList.add("welcome-already-seen");
     }
 </script>
@@ -79,6 +79,9 @@
     <audio id="bgMusic" loop>
         <source src="CSS/assets/dreamscape.mp3" type="audio/mpeg">
     </audio>
+
+    <audio id="duckQuack" src="CSS/assets/quack.mp3" preload="auto"></audio>
+    <audio id="frogRibbit" src="CSS/assets/ribbit.mp3" preload="auto"></audio>
 
     <button class="scroll-down" onclick="document.getElementById('experience').scrollIntoView({
     behavior: 'smooth'
@@ -169,11 +172,50 @@
 
 </div>
 
-<!-- <script src="JS/fade.js"></script> REMOVE TO REACTIVATE --> 
 <script src="JS/settings.js"></script>
 <script src="JS/color.js"></script>
 <script src="JS/font.js"></script>
 <script src="JS/loadDrawing.js"></script>
+
+
+<script>
+    const duck = document.querySelector(".duck");
+    const quack = document.getElementById("duckQuack");
+
+    duck.addEventListener("click", function () {
+        quack.currentTime = 0;
+        quack.play();
+
+        duck.classList.remove("quacking");
+
+        void duck.offsetWidth;
+
+        duck.classList.add("quacking");
+    });
+
+    duck.addEventListener("animationend", function () {
+        duck.classList.remove("quacking");
+    });
+</script>
+
+<script>
+    document.querySelectorAll(".frog, .frog2").forEach(function (frog) {
+    frog.addEventListener("click", function () {
+        const ribbit = document.getElementById("frogRibbit");
+
+        ribbit.currentTime = 0;
+        ribbit.play();
+
+        frog.classList.remove("ribbiting");
+        void frog.offsetWidth;
+        frog.classList.add("ribbiting");
+    });
+
+    frog.addEventListener("animationend", function () {
+        frog.classList.remove("ribbiting");
+    });
+});
+</script>
 
 </body>
 </html>

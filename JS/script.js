@@ -1,24 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     // --- Fade-in Scroll Animations ---
     const fadeElements = document.querySelectorAll(".fade-in-element");
+
     const observerOptions = {
-        root: null,        
-        rootMargin: "0px",  
-        threshold: 0.15    
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible"); 
-                observer.unobserve(entry.target); 
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     fadeElements.forEach(el => observer.observe(el));
-    
+
+
     // --- Smooth Scrolling Setup ---
     function addSmoothScroll(buttonId, targetId) {
         const button = document.getElementById(buttonId);
@@ -27,7 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!button || !target) return;
 
         button.addEventListener("click", (e) => {
-            e.preventDefault(); // Prevents instant jump if button is an 'a' tag
+            e.preventDefault();
+
             target.scrollIntoView({
                 behavior: "smooth",
                 block: "center"
@@ -38,104 +41,104 @@ document.addEventListener("DOMContentLoaded", () => {
     addSmoothScroll("scrollToExperience", "experience");
     addSmoothScroll("scrollToMain", "trailer");
 
-    
+
     // --- Background Music Setup ---
     const audio = document.getElementById("bgMusic");
     const icon = document.getElementById("musicIcon");
 
-    // Only run music code if the elements actually exist on the current page
-    if (audio && icon) {
-        // Check if user previously unmuted the music
-        const isMuted = sessionStorage.getItem("musicMuted") === "true"; 
+    if (audio) {
+        const isMuted = localStorage.getItem("musicMuted") === "true";
+
         audio.muted = isMuted;
-        
-        // Update icon visually based on state
-        if (audio.muted) {
-            icon.className = "fa-solid fa-volume-xmark";
-        } else {
-            icon.className = "fa-solid fa-volume-high";
+        audio.currentTime = 0;
+
+        if (icon) {
+            icon.className = audio.muted
+                ? "fa-solid fa-volume-xmark"
+                : "fa-solid fa-volume-high";
         }
 
-        // Track continuous playback position across pages
-        const savedTime = sessionStorage.getItem("musicTime");
-        if (savedTime) {
-            audio.currentTime = parseFloat(savedTime);
-        }
-
-        // Continuously save the current time of the song
-        setInterval(() => {
-            if (!audio.paused) {
-                sessionStorage.setItem("musicTime", audio.currentTime);
-            }
-        }, 1000);
-
-        // Attempt Autoplay safely
         audio.play().catch(() => {
             console.log("Autoplay blocked. Waiting for user interaction.");
         });
     }
 
- // --- Welcome Modal Setup ---
-const welcomeModal = document.getElementById("welcomeModal");
-const welcomeButton = document.getElementById("welcomeButton");
-const welcomeButtonNO = document.getElementById("welcomeButtonNO");
 
-function lockScroll() {
-    document.documentElement.classList.add("modal-open");
-    document.body.classList.add("modal-open");
-}
+    // --- Welcome Modal Setup ---
+    const welcomeModal = document.getElementById("welcomeModal");
+    const welcomeButton = document.getElementById("welcomeButton");
+    const welcomeButtonNO = document.getElementById("welcomeButtonNO");
 
-function unlockScroll() {
-    document.documentElement.classList.remove("modal-open");
-    document.body.classList.remove("modal-open");
-}
-
-function closeWelcomeModal() {
-    if (welcomeModal) {
-        welcomeModal.classList.add("is-hidden");
+    function lockScroll() {
+        document.documentElement.classList.add("modal-open");
+        document.body.classList.add("modal-open");
     }
 
-    unlockScroll();
+    function unlockScroll() {
+        document.documentElement.classList.remove("modal-open");
+        document.body.classList.remove("modal-open");
+    }
 
-    sessionStorage.setItem("welcomeSeen", "true");
+    function closeWelcomeModal() {
+        if (welcomeModal) {
+            welcomeModal.classList.add("is-hidden");
+        }
 
-    const audio = document.getElementById("bgMusic");
+        unlockScroll();
+        localStorage.setItem("welcomeSeen", "true");
 
-    if (audio && !audio.muted) {
-        audio.play().catch(error => {
-            console.log("Music playback failed:", error);
+        if (audio && !audio.muted) {
+            audio.play().catch(error => {
+                console.log("Music playback failed:", error);
+            });
+        }
+    }
+
+    if (welcomeModal) {
+        if (localStorage.getItem("welcomeSeen") === "true") {
+            welcomeModal.classList.add("is-hidden");
+            unlockScroll();
+        } else {
+            welcomeModal.classList.remove("is-hidden");
+            lockScroll();
+        }
+    }
+
+    if (welcomeButton) {
+        welcomeButton.addEventListener("click", closeWelcomeModal);
+    }
+
+    if (welcomeButtonNO) {
+        welcomeButtonNO.addEventListener("click", () => {
+            closeWelcomeModal();
+
+            const settingsButton = document.getElementById("settingsButton");
+
+            if (settingsButton) {
+                settingsButton.click();
+            }
         });
     }
-}
 
-if (welcomeModal) {
-    if (sessionStorage.getItem("welcomeSeen") === "true") {
-        welcomeModal.classList.add("is-hidden");
-        unlockScroll();
-    } else {
-        welcomeModal.classList.remove("is-hidden");
-        lockScroll();
+
+    // --- Fullscreen Alert Setup ---
+    const fullscreenButton = document.getElementById("fullscreen-button");
+    const alertBox = document.getElementById("fullscreen-alert");
+
+    if (fullscreenButton && alertBox) {
+        fullscreenButton.addEventListener("click", () => {
+            alertBox.classList.add("show");
+
+            setTimeout(() => {
+                alertBox.classList.remove("show");
+            }, 5000);
+        });
     }
-}
 
-if (welcomeButton) {
-    welcomeButton.onclick = closeWelcomeModal;
-}
-
-if (welcomeButtonNO) {
-    welcomeButtonNO.onclick = function () {
-        closeWelcomeModal();
-
-        const settingsButton = document.getElementById("settingsButton");
-
-        if (settingsButton) {
-            settingsButton.click();
-        }
-    };
-}
 });
 
 
+// --- Music Toggle ---
 function toggleMusic() {
     const audio = document.getElementById("bgMusic");
     const icon = document.getElementById("musicIcon");
@@ -144,30 +147,17 @@ function toggleMusic() {
 
     if (audio.muted) {
         audio.muted = false;
-        audio.play().catch(err => console.log("Playback failed:", err));
+
+        audio.play().catch(err => {
+            console.log("Playback failed:", err);
+        });
+
         icon.className = "fa-solid fa-volume-high";
-        sessionStorage.setItem("musicMuted", "false");
+        localStorage.setItem("musicMuted", "false");
     } else {
         audio.muted = true;
+
         icon.className = "fa-solid fa-volume-xmark";
-        sessionStorage.setItem("musicMuted", "true");
+        localStorage.setItem("musicMuted", "true");
     }
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    const fullscreenButton = document.getElementById("fullscreen-button");
-    const alertBox = document.getElementById("fullscreen-alert");
-
-    if (!fullscreenButton || !alertBox) {
-        console.error("Fullscreen button or alert element not found.");
-        return;
-    }
-
-    fullscreenButton.addEventListener("click", function () {
-        alertBox.classList.add("show");
-
-        setTimeout(() => {
-            alertBox.classList.remove("show");
-        }, 5000);
-    });
-});

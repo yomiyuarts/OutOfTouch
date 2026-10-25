@@ -53,6 +53,9 @@
     <source src="CSS/assets/dreamscape.mp3" type="audio/mpeg">
 </audio>
 
+<audio id="duckQuack" src="CSS/assets/quack.mp3" preload="auto"></audio>
+    <audio id="frogRibbit" src="CSS/assets/ribbit.mp3" preload="auto"></audio>
+
 <div class="artworkteam fade-in-element">
     <div class="drawn-char"></div>
         <div class="drawn-char2"></div>
@@ -88,7 +91,7 @@
         <div class="eraser2"></div>
         <div class="pencil2"></div>
         <div class="drawn-char4"></div>
-        <div class="frog3"></div>
+        <div class="frog2" style="left: 83%;"></div>
 
 <div class="artist2 fade-in-element">
     <div class="text-box-artist2">
@@ -158,6 +161,45 @@
 <script src="JS/color.js"></script>
 <script src="JS/font.js"></script>
 <script src="JS/loadDrawing.js"></script>
+
+<script>
+    const duck = document.querySelector(".duck");
+    const quack = document.getElementById("duckQuack");
+
+    duck.addEventListener("click", function () {
+        quack.currentTime = 0;
+        quack.play();
+
+        duck.classList.remove("quacking");
+
+        void duck.offsetWidth;
+
+        duck.classList.add("quacking");
+    });
+
+    duck.addEventListener("animationend", function () {
+        duck.classList.remove("quacking");
+    });
+</script>
+
+<script>
+    document.querySelectorAll(".frog, .frog2").forEach(function (frog) {
+    frog.addEventListener("click", function () {
+        const ribbit = document.getElementById("frogRibbit");
+
+        ribbit.currentTime = 0;
+        ribbit.play();
+
+        frog.classList.remove("ribbiting");
+        void frog.offsetWidth;
+        frog.classList.add("ribbiting");
+    });
+
+    frog.addEventListener("animationend", function () {
+        frog.classList.remove("ribbiting");
+    });
+});
+</script>
 
 </body>
 </html>

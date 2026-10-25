@@ -129,7 +129,7 @@ body {
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(20, 20, 35, 0.95);
+    background-color: var(--accent-color);
     color: white;
     padding: 15px 25px;
     border-radius: 12px;

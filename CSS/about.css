@@ -152,21 +152,6 @@
     rotate: 140deg;
 }
 
-.frog3 {
-    position: absolute;
-    top: 160%;
-    left: 82%;
-    width: 20%;
-    aspect-ratio: 1 / 1;
-    z-index: 1;
-    transform: scaleX(-1);
-    background-image: url('assets/frog.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    rotate: -10deg;
-}
-
 .eraser2 {
     position: absolute;
     top: 200%;
