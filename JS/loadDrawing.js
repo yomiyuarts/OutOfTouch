@@ -228,13 +228,17 @@ characters.forEach(function (element, index) {
         }
     }
 
-    document.addEventListener("click", function (event) {
-    const character = event.target.closest(".drawn-char2");
+    
+document.addEventListener("click", function (event) {
+    const character = event.target.closest(
+        ".drawn-char, .drawn-char2, .drawn-char3, .drawn-char4"
+    );
 
     if (character) {
         randomizeCharacter(character);
     }
 });
+
 
     window.loadSavedDrawing = loadSavedDrawing;
 
