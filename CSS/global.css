@@ -17,13 +17,20 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
+    scrollbar-gutter: stable;
+}
+
+main {
+    display: block;
+    position: relative;
+    clear: both;
 }
 
 body {
     min-height: 100vh;
 }
 
-@media (min-width: 768px) and (max-width: 1165px) {
+@media (max-width: 1065px) {
 
     html::before {
         content: "A desktop is required for this experience.\A\A Please access this website on a larger screen.";

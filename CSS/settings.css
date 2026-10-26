@@ -2,27 +2,25 @@
     position: fixed;
     inset: 0;
 
-    display: flex;
+    /* CHANGE HERE: Start with display: none so Chrome calculates 0px layout space */
+    display: none; 
     justify-content: center;
     align-items: center;
 
     background: rgba(8, 12, 30, 0.8);
     backdrop-filter: blur(8px);
 
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
-
+    /* Cleaned up the double opacity/visibility rules you had here */
     z-index: 9997;
-
     opacity: 0;
-    visibility: hidden;
     pointer-events: none;
+    transition: opacity 0.4s ease;
 }
 
 .settings-overlay.active {
+    /* CHANGE HERE: Switch back to display: flex when opened */
+    display: flex !important; 
     opacity: 1;
-    visibility: visible;
     pointer-events: auto;
     animation: fadeUp 0.4s ease-out;
 }
@@ -47,7 +45,7 @@
     font-size: clamp(4vw, 5vw, 50px);
     color: var(--accent-color);
     font-family: var(--main-font);
-    margin-top: 2%;
+    margin-top: 2px; 
 }
 
 .settings-content p {
@@ -137,4 +135,3 @@
         transform: translateY(0);
     }
 }
-

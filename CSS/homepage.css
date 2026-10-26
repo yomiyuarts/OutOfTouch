@@ -1,5 +1,7 @@
 body {
     gap: clamp(10vh, 10vh, 100px);
+    display: flex;
+    flex-direction: column;
 }
 
 .drawn-char {
@@ -240,7 +242,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 100px;
+    padding-top: 5%;
+    margin-top: 0 !important;
     box-sizing: border-box;
 }
 
@@ -383,6 +386,7 @@ body {
     text-align: center; 
     padding: 0;
     color: var(--text-color);
+    line-height: 50px;
 }
 
 .pencil {
@@ -666,7 +670,7 @@ body {
 /* Hidden State */
 .welcome-overlay.is-hidden {
     opacity: 0;
-    visibility: hidden;
+    display: none;
     pointer-events: none;
 }
 
