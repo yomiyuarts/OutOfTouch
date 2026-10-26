@@ -11,8 +11,26 @@
     ];
 
     const SELECTOR = ".drawn-char, .drawn-char2, .drawn-char3, .drawn-char4";
+
+    let noticeTimeout;
+
+const drawingNotice = document.createElement("div");
+drawingNotice.className = "drawing-notice";
+drawingNotice.textContent = "Play our experience for a surprise!";
+document.body.appendChild(drawingNotice);
+
+function showDrawingNotice() {
+    drawingNotice.classList.add("show");
+
+    clearTimeout(noticeTimeout);
+
+    noticeTimeout = setTimeout(function () {
+        drawingNotice.classList.remove("show");
+    }, 3000);
+}
+
     const popSound = new Audio("CSS/assets/pop.mp3");
-popSound.volume = 0.5;
+    popSound.volume = 0.5;
 
     const validDrawings = {};
     const assignedDrawings = new Map();
@@ -237,6 +255,13 @@ document.addEventListener("click", function (event) {
     );
 
     if (character) {
+        const hasDrawing = assignedDrawings.has(character);
+
+        if (!hasDrawing || !validDrawings[assignedDrawings.get(character)]) {
+            showDrawingNotice();
+            return;
+        }
+
         popSound.currentTime = 0;
         popSound.play().catch(error => {
             console.warn("Could not play pop sound:", error);
