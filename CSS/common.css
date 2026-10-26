@@ -140,6 +140,7 @@ html {
     position: relative;
     left: 0;
     border-radius: 70px 70px 0 0;
+    margin-top: 3%;
 }
 
 .drawing-notice {
