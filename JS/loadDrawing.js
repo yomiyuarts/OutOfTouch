@@ -158,6 +158,7 @@ function setDrawing(element, path) {
 
 
     
+
 async function randomizeCharacter(element) {
     let db;
 
@@ -165,40 +166,62 @@ async function randomizeCharacter(element) {
         db = await openUnityDatabase();
 
         const paths = shuffle([...DRAWING_PATHS]);
-        let nextPath = null;
+        const availableDrawings = [];
 
         for (const path of paths) {
             const url = await getDrawing(db, path);
 
-            if (!url) continue;
-
-            if (await loadImage(url)) {
-                const oldUrl = validDrawings[path];
-
-                validDrawings[path] = url;
-
-                if (oldUrl && oldUrl !== url) {
-                    URL.revokeObjectURL(oldUrl);
-                }
-
-                if (path !== assignedDrawings.get(element)) {
-                    nextPath = path;
-                    break;
-                }
-            } else {
-                URL.revokeObjectURL(url);
+            if (!url) {
+                continue;
             }
+
+            const isValid = await loadImage(url);
+
+            if (!isValid) {
+                URL.revokeObjectURL(url);
+                continue;
+            }
+
+            if (validDrawings[path]) {
+                URL.revokeObjectURL(url);
+            } else {
+                validDrawings[path] = url;
+            }
+
+            availableDrawings.push(path);
         }
 
-        if (nextPath) {
+        const currentPath = assignedDrawings.get(element);
+
+        const otherDrawings = availableDrawings.filter(
+            path => path !== currentPath
+        );
+
+        const choices = otherDrawings.length > 0
+            ? otherDrawings
+            : availableDrawings;
+
+        if (choices.length > 0) {
+            const nextPath = choices[
+                Math.floor(Math.random() * choices.length)
+            ];
+
             setDrawing(element, nextPath);
+        } else {
+            assignedDrawings.delete(element);
+            element.style.backgroundImage = "";
+            showDrawingNotice();
         }
+
     } catch (error) {
         console.error("Could not refresh saved drawings:", error);
     } finally {
-        if (db) db.close();
+        if (db) {
+            db.close();
+        }
     }
 }
+
 
 
     async function loadSavedDrawing() {
@@ -251,27 +274,34 @@ characters.forEach(function (element, index) {
     }
 
     
-document.addEventListener("click", function (event) {
-    const character = event.target.closest(
-        ".drawn-char, .drawn-char2, .drawn-char3, .drawn-char4"
-    );
 
-    if (character) {
-        const hasDrawing = assignedDrawings.has(character);
+document.addEventListener("click", async function (event) {
+    const character = event.target.closest(SELECTOR);
 
-        if (!hasDrawing || !validDrawings[assignedDrawings.get(character)]) {
+    if (!character) {
+        return;
+    }
+
+    const hasDrawing = assignedDrawings.has(character);
+
+    if (!hasDrawing || !validDrawings[assignedDrawings.get(character)]) {
+        await randomizeCharacter(character);
+
+        if (!assignedDrawings.has(character)) {
             showDrawingNotice();
             return;
         }
-
+    } else {
         popSound.currentTime = 0;
+
         popSound.play().catch(error => {
             console.warn("Could not play pop sound:", error);
         });
 
-        randomizeCharacter(character);
+        await randomizeCharacter(character);
     }
 });
+
 
 
     window.loadSavedDrawing = loadSavedDrawing;
