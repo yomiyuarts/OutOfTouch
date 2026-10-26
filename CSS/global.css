@@ -13,10 +13,10 @@ body {
     width: 100%;
 }
 
-@media (max-width: 1365px) {
+@media (max-width: 1024px), (pointer: coarse) {
 
     html::before {
-        content: "A desktop is required for this experience.\A\A Please access this website on a larger screen.";
+        content: "A desktop is required for this experience.\A Please access this website on a larger screen.";
         white-space: pre-wrap;
 
         position: fixed;
@@ -34,7 +34,7 @@ body {
 
         color: white;
         text-align: center;
-        font-size: 24px;
+        font-size: clamp(1.5vh, 1.5vh, 18px);
         font-weight: bold;
         font-family: candal, sans-serif;
     }
