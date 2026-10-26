@@ -142,8 +142,6 @@ body {
     }
 }
 
-
-
 .frog2.ribbiting {
     animation: frog2Ribbit 0.55s ease-in-out;
 }
@@ -178,13 +176,9 @@ body {
     }
 }
 
-
-
 .drawn-char, .drawn-char2, .drawn-char3, .drawn-char4 { 
   filter: url(#locked-outline); 
 }
-
-
 
 .drawn-char,
 .drawn-char2,
@@ -290,6 +284,42 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     z-index: 2;
+
+    transition: scale 0.2s ease;
+}
+
+.stars:hover {
+    animation: starry 0.6s ease-in-out infinite; 
+}
+
+@keyframes starry {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    20% {
+        transform: scale(1.18) rotate(-8deg);
+    }
+
+    35% {
+        transform: scale(1.1) rotate(8deg);
+    }
+
+    50% {
+        transform: scale(1.08) rotate(-7deg);
+    }
+
+    65% {
+        transform: scale(1.05) rotate(5deg);
+    }
+
+    80% {
+        transform: scale(1.02) rotate(-3deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
 }
 
 .eraser {
@@ -319,7 +349,6 @@ body {
     background-repeat: no-repeat;
     rotate: -10deg;
 }
-
 
 .paper {
     width: 100%;
