@@ -357,6 +357,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    margin-top: 5%;
 }
 
 .paper img {
@@ -532,8 +533,10 @@ body {
 .scroll-down {
     position: fixed;
     bottom: clamp(10px, 2vh, 30px);
-    transform: translateX(-50%);
-    transform-origin: center;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    margin: 0 auto;
 
     padding: clamp(6px, 0.7vw, 12px) clamp(12px, 1.4vw, 24px);
     border: none;

@@ -50,10 +50,12 @@ body {
     background-color: var(--primary-color);
     color: var(--text-color);
     font-family: "Candal", sans-serif;
-    font-size: clamp(12px, 1.5vh, 18px);
+    font-size: clamp(1.5vh, 1.5vh, 18px);
+    height: 5%;
+    width: 3%;
     padding: clamp(6px, 1vh, 10px) clamp(10px, 1.5vh, 20px);
     border: none;
-    border-radius: 30px;
+    border-radius: 45%;
     cursor: pointer;
 
     transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -96,7 +98,7 @@ body {
 
 #unity-loading-bar p {
     margin: 0;
-    font-size: 16px;
+    font-size: clamp(1.5vh, 1.5vh, 18px);
 }
 
 @keyframes spin {
@@ -154,5 +156,5 @@ body {
     color: white;
     font-family: var(--main-font);
     text-align: center;
-    margin-top: -10%;
+    margin-top: 1.5%;
 }

@@ -67,7 +67,6 @@ html {
 #experience-link {
     background-color: transparent;
     padding: 10px 20px;
-    border-radius: 30px;
     animation: experiencePulse 2s infinite ease-in-out;
 }
 

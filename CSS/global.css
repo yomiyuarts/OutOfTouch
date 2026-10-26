@@ -1,10 +1,4 @@
 body{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
     background-image: var(--background-image);
     background-size: 100% auto;
     background-position: top center;
@@ -17,10 +11,6 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-}
-
-body {
-    min-height: 100vh;
 }
 
 @media (max-width: 1365px) {
