@@ -405,7 +405,8 @@ body {
     text-align: center; 
     padding: 0;
     color: var(--text-color);
-    line-height: 50px;
+    line-height: 90%;
+    margin: 5%;
 }
 
 .pencil {
