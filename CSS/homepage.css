@@ -501,7 +501,6 @@ body {
 .scroll-down {
     position: fixed;
     bottom: clamp(10px, 2vh, 30px);
-    left: 50%;
     transform: translateX(-50%);
     transform-origin: center;
 
@@ -526,11 +525,11 @@ body {
 
 @keyframes glowPulse {
     0%, 100% {
-        transform: translateX(-50%) scale(1);
+        transform: scale(1);
     }
 
     50% {
-        transform: translateX(-50%) scale(1.1);
+        transform: scale(1.1);
     }
 }
 
