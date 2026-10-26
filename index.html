@@ -167,6 +167,23 @@
 
 </div>
 
+<svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="locked-outline" x="-20%" y="-20%" width="140%" height="140%" primitiveUnits="objectBoundingBox">
+
+      <feMorphology operator="dilate" radius="0.03" in="SourceAlpha" result="thicken" />
+      <feFlood flood-color="#ededed" result="color" />
+      <feComposite in="color" in2="thicken" operator="in" result="outline" />
+      <feMerge>
+        <feMergeNode in="outline" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+</svg>
+
+
+
 <script src="JS/script.js"></script>
 <script src="JS/switch.js"></script>
 <script src="JS/buttonFade.js"></script>

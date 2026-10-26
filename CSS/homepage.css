@@ -180,20 +180,12 @@ body {
 
 
 
-.drawn-char,
-.drawn-char2,
-.drawn-char3,
-.drawn-char4 {
-    filter:
-        drop-shadow(clamp(6px, 6vw, 6px) 0 0 #ededed)
-        drop-shadow(clamp(-6px, -6vw, -6px) 0 0 #ededed)
-        drop-shadow(0 clamp(6px, 6vw, 6px) 0 #ededed)
-        drop-shadow(0 clamp(-6px, -6vw, -6px) 0 #ededed)
-        drop-shadow(clamp(6px, 6vw, 6px) clamp(6px, 6vw, 6px) 0 #ededed)
-        drop-shadow(clamp(-6px, -6vw, -6px) clamp(-6px, -6vw, -6px) 0 #ededed)
-        drop-shadow(clamp(6px, 6vw, 6px) clamp(-6px, -6vw, -6px) 0 #ededed)
-        drop-shadow(clamp(-6px, -6vw, -6px) clamp(6px, 6vw, 6px) 0 #ededed);
+.drawn-char, .drawn-char2, .drawn-char3, .drawn-char4 { 
+  /* This hooks directly into the vector engine, locking the 6px outline */
+  filter: url(#locked-outline); 
 }
+
+
 
 .drawn-char,
 .drawn-char2,
