@@ -8,6 +8,8 @@
         FOLDER + "intro_drawing_sketchbook.png",
         FOLDER + "intro_drawing_bathroom_unfog.png",
         FOLDER + "intro_drawing_bathroom_fog.png"
+        FOLDER + "chap1_drawing1.png",
+        FOLDER + "chap1_drawing2.png"
     ];
 
     const SELECTOR = ".drawn-char, .drawn-char2, .drawn-char3, .drawn-char4";
