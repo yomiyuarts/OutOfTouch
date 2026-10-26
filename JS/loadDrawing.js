@@ -7,7 +7,7 @@
         FOLDER + "intro_drawing_computer.png",
         FOLDER + "intro_drawing_sketchbook.png",
         FOLDER + "intro_drawing_bathroom_unfog.png",
-        FOLDER + "intro_drawing_bathroom_fog.png"
+        FOLDER + "intro_drawing_bathroom_fog.png",
         FOLDER + "chap1_drawing1.png",
         FOLDER + "chap1_drawing2.png"
     ];
