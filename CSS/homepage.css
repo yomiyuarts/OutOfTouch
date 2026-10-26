@@ -181,7 +181,6 @@ body {
 
 
 .drawn-char, .drawn-char2, .drawn-char3, .drawn-char4 { 
-  /* This hooks directly into the vector engine, locking the 6px outline */
   filter: url(#locked-outline); 
 }
 
