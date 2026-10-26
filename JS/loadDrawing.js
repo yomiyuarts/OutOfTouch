@@ -11,6 +11,8 @@
     ];
 
     const SELECTOR = ".drawn-char, .drawn-char2, .drawn-char3, .drawn-char4";
+    const popSound = new Audio("CSS/assets/pop.mp3");
+popSound.volume = 0.5;
 
     const validDrawings = {};
     const assignedDrawings = new Map();
@@ -235,6 +237,11 @@ document.addEventListener("click", function (event) {
     );
 
     if (character) {
+        popSound.currentTime = 0;
+        popSound.play().catch(error => {
+            console.warn("Could not play pop sound:", error);
+        });
+
         randomizeCharacter(character);
     }
 });
