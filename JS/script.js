@@ -43,25 +43,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // --- Background Music Setup ---
-    const audio = document.getElementById("bgMusic");
-    const icon = document.getElementById("musicIcon");
+// --- Background Music Setup ---
+const audio = document.getElementById("bgMusic");
+const icon = document.getElementById("musicIcon");
 
-    if (audio) {
-        const isMuted = localStorage.getItem("musicMuted") === "true";
+if (audio) {
+    const isMuted = localStorage.getItem("musicMuted") === "true";
+    const savedTime = sessionStorage.getItem("musicTime");
 
-        audio.muted = isMuted;
-        audio.currentTime = 0;
+    audio.muted = isMuted;
 
-        if (icon) {
-            icon.className = audio.muted
-                ? "fa-solid fa-volume-xmark"
-                : "fa-solid fa-volume-high";
-        }
+    if (icon) {
+        icon.className = audio.muted
+            ? "fa-solid fa-volume-xmark"
+            : "fa-solid fa-volume-high";
+    }
 
+    if (savedTime !== null) {
+        audio.addEventListener("loadedmetadata", function restoreTime() {
+            if (Number.isFinite(audio.duration)) {
+                audio.currentTime = Number(savedTime) % audio.duration;
+            }
+
+            audio.removeEventListener("loadedmetadata", restoreTime);
+
+            if (!audio.muted) {
+                audio.play().catch(() => {
+                    console.log("Playback requires user interaction.");
+                });
+            }
+        });
+    } else if (!audio.muted) {
         audio.play().catch(() => {
             console.log("Autoplay blocked. Waiting for user interaction.");
         });
     }
+
+    audio.addEventListener("timeupdate", () => {
+    sessionStorage.setItem("musicTime", audio.currentTime);
+});
+
+window.addEventListener("pagehide", () => {
+    sessionStorage.setItem("musicTime", audio.currentTime);
+});
+}
 
 
     // --- Welcome Modal Setup ---
