@@ -6,9 +6,9 @@ html {
 .nav-bar {
     position: fixed;
     left: 0;
-    top: clamp(-25px, -1.5vw, -5px);
+    top: -0.1%;
     width: 100%;
-    padding: clamp(5px, 1vw, 20px);
+    padding: 0 clamp(5px, 1vw, 20px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,7 +29,7 @@ html {
 .logo-image {
     display: block;
     width: clamp(20vw, 20vw, 300px);
-    height: clamp(5vw, 6.7vw, 100px);
+    height: clamp(4vw, 5vw, 75px);
     background-image: var(--logo-image);
     background-size: contain;
     background-repeat: no-repeat;
@@ -47,7 +47,7 @@ html {
     background-image: var(--nav-bar);
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    padding: clamp(1.2vw, 1.2vw, 20px) clamp(3vw, 3vw, 60px);
+    padding: clamp(1vw, 1vw, 12px) clamp(3vw, 3vw, 60px);
 }
 
 .nav-links a{
