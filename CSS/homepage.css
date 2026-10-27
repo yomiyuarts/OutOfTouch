@@ -1,5 +1,4 @@
 body {
-    gap: clamp(10vh, 10vh, 100px);
     display: flex;
     flex-direction: column;
 }
@@ -227,9 +226,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 5%;
-    margin-top: 0 !important;
     box-sizing: border-box;
+    padding-top: 5%;
 }
 
 .trailer img {
@@ -359,6 +357,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    margin-top: 5%;
 }
 
 .paper img {
@@ -406,7 +405,8 @@ body {
     text-align: center; 
     padding: 0;
     color: var(--text-color);
-    line-height: 50px;
+    line-height: 90%;
+    margin: 0 10% 5% 10%;
 }
 
 .pencil {
@@ -534,8 +534,10 @@ body {
 .scroll-down {
     position: fixed;
     bottom: clamp(10px, 2vh, 30px);
-    transform: translateX(-50%);
-    transform-origin: center;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    margin: 0 auto;
 
     padding: clamp(6px, 0.7vw, 12px) clamp(12px, 1.4vw, 24px);
     border: none;
@@ -544,7 +546,7 @@ body {
     background: var(--primary-color);
     color: white;
 
-    font-size: clamp(1.5vw, 1.5vw, 24px);
+    font-size: clamp(1.2vw, 1.2vw, 24px);
     font-family: "Candal", sans-serif;
     cursor: pointer;
     z-index: 9997;
