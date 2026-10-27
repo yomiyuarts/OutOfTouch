@@ -21,8 +21,14 @@ drawingNotice.className = "drawing-notice";
 drawingNotice.textContent = "Play our experience for a surprise!";
 document.body.appendChild(drawingNotice);
 
-function showDrawingNotice() {
+function showDrawingNotice(event) {
     drawingNotice.classList.add("show");
+
+    if (event) {
+        drawingNotice.style.left = event.clientX + 15 + "px";
+        drawingNotice.style.top = event.clientY + 15 + "px";
+        drawingNotice.style.bottom = "auto";
+    }
 
     clearTimeout(noticeTimeout);
 
@@ -300,6 +306,35 @@ document.addEventListener("click", async function (event) {
 
         await randomizeCharacter(character);
     }
+});
+
+document.addEventListener("mouseover", function (event) {
+    const character = event.target.closest(SELECTOR);
+
+    if (!character) {
+        return;
+    }
+
+    const hasDrawing = assignedDrawings.has(character);
+
+    if (!hasDrawing || !validDrawings[assignedDrawings.get(character)]) {
+        showDrawingNotice(event);
+    }
+});
+
+document.addEventListener("mouseout", function (event) {
+    const character = event.target.closest(SELECTOR);
+
+    if (!character) {
+        return;
+    }
+
+    if (event.relatedTarget && character.contains(event.relatedTarget)) {
+        return;
+    }
+
+    drawingNotice.classList.remove("show");
+    clearTimeout(noticeTimeout);
 });
 
 
